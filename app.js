@@ -118,19 +118,35 @@ async function validarEntrada() {
   status.innerHTML = '<div class="spinner-border spinner-border-sm text-primary"></div> Verificando...';
 
   try {
-    // ... dentro de tu función de login ...
-const respuesta = await fetch(URL_BACKEND, { // USA LA NUEVA URL AQUÍ
-    method: "POST",
-    mode: "cors", 
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        accion: "login",
-        usuario: userInput,
-        pass: passInput
-    })
-});
+    // 1. Preparamos los datos como formulario simple
+    const datosFormulario = new URLSearchParams();
+    datosFormulario.append('usuario', userInput);
+    datosFormulario.append('pass', passInput);
+
+    // 2. Hacemos el fetch sin headers de JSON ni modo CORS
+    const respuesta = await fetch(URL_BACKEND, {
+      method: "POST",
+      body: datosFormulario 
+    });
+
+    // 3. Procesamos la respuesta
+    const res = await respuesta.json();
+    console.log("Respuesta servidor:", res);
+
+    // 4. Tu lógica de login continúa aquí...
+    if (res && res.autorizado === true) {
+      // (Aquí va tu lógica de éxito, cerrar modal, etc.)
+      status.innerHTML = '<div class="alert alert-success">¡Acceso concedido!</div>';
+      // ... redirigir o mostrar contenido ...
+    } else {
+      status.innerHTML = '<div class="alert alert-danger">' + (res.error || 'Error desconocido') + '</div>';
+    }
+
+  } catch (error) {
+    console.error("Error capturado:", error);
+    status.innerHTML = '<div class="alert alert-danger">Error: ' + error.message + '</div>';
+  }
+}
 
 const res = await respuesta.json(); // Ahora esto no debería fallar
 console.log("Respuesta:", res);
