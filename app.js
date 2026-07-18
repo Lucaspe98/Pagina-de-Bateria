@@ -11,6 +11,19 @@ function googleTranslateElementInit() {
   }, 'google_translate_element');
 }
 
+// --- CARGA DE SECCIONES (NUEVO) ---
+async function cargarIncludes() {
+  try {
+    const navRes = await fetch('_includes/navbar.html');
+    if (navRes.ok) document.getElementById('navbar-container').innerHTML = await navRes.text();
+
+    const pagesRes = await fetch('_includes/pages.html');
+    if (pagesRes.ok) document.getElementById('pages-container').innerHTML = await pagesRes.text();
+  } catch (error) {
+    console.error("Error al cargar los archivos HTML:", error);
+  }
+}
+
 // --- CIERRE DE SESIÓN ---
 window.logout = async function() {
   console.log("Cerrando sesión...");
@@ -116,7 +129,6 @@ async function validarEntrada() {
   status.innerHTML = '<div class="spinner-border spinner-border-sm text-primary"></div> Verificando...';
 
   try {
-    // Petición POST directa (Content-Type: text/plain implicito al omitir headers)
     const respuesta = await fetch(URL_BACKEND, {
       method: "POST",
       body: JSON.stringify({
@@ -231,7 +243,6 @@ async function crearUsuarioDesdePanel() {
 }
 
 // --- FUNCIONES VISUALES Y COMPONENTES ---
-
 function toggleChat() {
   const token = sessionStorage.getItem(SESSION_TOKEN_KEY);
   if (!token) {
@@ -477,7 +488,7 @@ function cerrarPDF() {
   if (iframe) iframe.src = "";
 }
 
-// --- INICIALIZACIONES Y OBSERVERS ---
+// --- INICIALIZACIONES ---
 function inicializarProgresoYReveals() {
   const elementosOcultos = document.querySelectorAll(".reveal");
   const opciones = { 
@@ -525,24 +536,20 @@ function inicializarProgresoYReveals() {
   });
 }
 
-// Cierres de modales y dropdowns
-document.addEventListener('click', function(e) {
-  const searchInput = document.getElementById('searchInput');
-  const searchDropdown = document.getElementById('searchDropdown');
-  if (searchInput && !searchInput.contains(e.target) && searchDropdown && !searchDropdown.contains(e.target)) {
-    searchDropdown.classList.add('d-none');
-  }
-});
+// --- INICIALIZACIÓN GLOBAL ÚNICA ---
+document.addEventListener("DOMContentLoaded", async () => {
+  // 1. Cargar archivos externos primero
+  await cargarIncludes();
 
-document.addEventListener("DOMContentLoaded", () => {
+  // 2. Eventos iniciales
   const modalVideo = document.getElementById('videoModal');
   if (modalVideo) modalVideo.addEventListener('hidden.bs.modal', detenerVideo);
 
   const modalPDF = document.getElementById('pdfModal');
   if (modalPDF) modalPDF.addEventListener('hidden.bs.modal', cerrarPDF);
 
+  // 3. Setup de animaciones
   const targetElements = document.querySelectorAll('.card, .card2, .info-box, .instruccion-tecnica, h4, .card-progression');
-  
   targetElements.forEach((el, index) => {
     el.classList.add("scroll-animate");
     if (el.classList.contains("card")) {
@@ -563,20 +570,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }, observerOptions);
 
   targetElements.forEach(el => observer.observe(el));
-  // conexion con navbar y pages 
-  async function cargarIncludes() {
-  // Carga el navbar
-  const navRes = await fetch('_includes/navbar.html');
-  document.getElementById('navbar-container').innerHTML = await navRes.text();
 
-  // Carga las páginas
-  const pagesRes = await fetch('_includes/pages.html');
-  document.getElementById('pages-container').innerHTML = await pagesRes.text();
-}
-
-document.addEventListener("DOMContentLoaded", cargarIncludes);
-
-  // Rutina secundaria (fallback) para verificar visibilidad
+  // 4. Fallback de visibilidad
   const verificarVisibilidad = setInterval(() => {
     const mainContent = document.getElementById('mainContent');
     if (mainContent && !mainContent.classList.contains('d-none')) {
@@ -585,7 +580,16 @@ document.addEventListener("DOMContentLoaded", cargarIncludes);
     }
   }, 500);
 
-  // Navegación horizontal táctil
+  // 5. Cierre de dropdown
+  document.addEventListener('click', function(e) {
+    const searchInput = document.getElementById('searchInput');
+    const searchDropdown = document.getElementById('searchDropdown');
+    if (searchInput && !searchInput.contains(e.target) && searchDropdown && !searchDropdown.contains(e.target)) {
+      searchDropdown.classList.add('d-none');
+    }
+  });
+
+  // 6. Navegación táctil
   const nav = document.querySelector('.navbar-collapse');
   if(nav) {
     let isDown = false, startX, scrollLeft;
