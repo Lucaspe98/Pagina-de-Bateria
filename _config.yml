@@ -1,3 +1,7 @@
 # _config.yml
 title: Mi Diccionario Musical
 description: Aplicación de clases y herramientas técnicas.
+
+# Esto es lo básico, Jekyll suele buscar en _includes por defecto
+include:
+  - _includes
