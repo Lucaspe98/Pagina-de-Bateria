@@ -118,17 +118,16 @@ async function validarEntrada() {
   status.innerHTML = '<div class="spinner-border spinner-border-sm text-primary"></div> Verificando...';
 
   try {
-    // Cambio a un Proxy de CORS más estable (CodeTabs)
-    const PROXY_URL = "https://api.codetabs.com/v1/proxy?quest=";
-    const urlParaFetch = PROXY_URL + URL_BACKEND;
-
-    const datosFormulario = new URLSearchParams();
-    datosFormulario.append('usuario', userInput);
-    datosFormulario.append('pass', passInput);
-
-    const respuesta = await fetch(urlParaFetch, {
+    // LLAMADA DIRECTA SIN PROXIES
+    // Al hacer JSON.stringify y NO poner "headers", el navegador envía esto
+    // como texto plano (text/plain). Google lo acepta sin bloquear el CORS.
+    const respuesta = await fetch(URL_BACKEND, {
       method: "POST",
-      body: datosFormulario
+      body: JSON.stringify({
+        accion: "login",
+        usuario: userInput,
+        pass: passInput
+      })
     });
 
     const res = await respuesta.json();
@@ -161,7 +160,6 @@ async function validarEntrada() {
         inicializarProgresoYReveals();
       }
     } else {
-      // Corrección para evitar mostrar [object Object]
       let errorMsg = typeof res.error === 'object' ? JSON.stringify(res.error) : (res.error || "Acceso denegado");
       status.innerHTML = '<div class="alert alert-danger mt-2">' + errorMsg + '</div>';
     }
@@ -170,7 +168,6 @@ async function validarEntrada() {
     console.error("Error capturado:", error);
     status.innerHTML = '<div class="alert alert-danger">Error: ' + error.message + '</div>';
   }
-}
 
 // --- GESTIÓN DE USUARIOS (PANEL ADMIN) ---
 async function crearUsuarioDesdePanel() {
