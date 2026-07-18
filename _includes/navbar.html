@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg fixed-top px-3 shadow-sm">
+  <a class="navbar-brand p-0 m-0" href="javascript:void(0)" onclick="showPage('home')" style="display: flex; align-items: center; width: 100px; height: 50px; overflow: hidden;">
+  <img 
+    src="https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/logo%20Drumclass1.PNG" 
+    alt="Logo de Clases de Batería" 
+    class="rounded" 
+    style="
+      max-width: 100%;
+      max-height: 100%;
+      /* CAMBIO CLAVE AQUÍ */
+      object-fit: cover; /* Cambiado de 'contain' a 'cover' */
+      object-position: center; /* Asegura que el centro del logo sea el foco */
+      display: block;
+      margin: auto;
+      transform: scale(1.0);
+    "
+  >
+</a>
+
+  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showPage('home')">Inicio</a></li>
+      <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showPage('ejercicios')">Ejercicios</a></li>
+      <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showPage('ritmos')">Ritmos</a></li>
+      <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showPage('estilos')">Estilos</a></li>
+      <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showPage('impro')">Improvisacion</a></li>
+      <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showPage('material')">Material</a></li>
+      <li class="nav-item"><a class="nav-link" href="javascript:void(0)" onclick="showPage('admin')">Admin</a></li>
+    </ul>
+    
+    <div class="d-flex align-items-center gap-2">
+      <div class="position-relative d-md-block" style="width: 250px;">
+        <input class="form-control" id="searchInput" placeholder="Buscar..." onkeyup="searchContent()" autocomplete="off">
+        <div id="searchDropdown" class="list-group position-absolute w-100 shadow-sm d-none" style="z-index: 1000; max-height: 300px; overflow-y: auto;"></div>
+      </div>
+
+      <button class="btn btn-theme-toggle" onclick="toggleTheme()" title="Cambiar tema">
+        <i class="bi bi-moon-stars-fill"></i>
+      </button>
+
+      <button class="btn btn-logout" onclick="window.logout()" title="Cerrar sesión">
+        <i class="bi bi-box-arrow-right"></i>
+        <span class="d-none d-lg-inline"> Salir</span>
+      </button>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Curso de Bateria</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Llamada al archivo CSS estático -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+  <div id="loginScreen" class="container-fluid min-vh-100 py-5 position-relative">
+  
+    <div class="position-absolute top-0 end-0 p-4">
+      <button class="btn btn-premium-login rounded-pill px-4 py-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
+      </button>
+    </div>
+
+    <div class="container mt-5 pt-4">
+      <div class="text-center mb-5">
+        <img 
+    src="https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/logo%20Drumclass1.PNG" 
+    alt="Logo o Imagen" 
+    class="img-fluid rounded" 
+    style="
+      width: 20%; 
+      height: 20%; 
+      object-fit: cover; 
+      transform: scale(1.0);
+    ">
+        <div class="container mt-4 mb-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      
+      <div class="card shadow-lg border-0" style="border-radius: 16px; overflow: hidden;">
+        <img 
+          src="https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/intro%20web.jpeg" 
+          alt="Logo o Imagen" 
+          class="img-fluid rounded" 
+          style="
+            width: 100%;  
+            object-fit: cover; 
+            transform: scale(1.0);
+          ">
+          <br>
+        <div class="ratio ratio-16x9">
+          <iframe 
+            src="https://www.youtube.com/embed/Qvs2_DhAg2Q?rel=0&modestbranding=1" 
+            title="Trailer de la página" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            style="border: none;">
+          </iframe>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+    <div class="text-center mb-5">
+        <h3 class="fw-bold text-brand-adaptive">Elegí tu Plan de Estudio</h3>
+        <p class="text-muted">Llevá tu práctica al siguiente nivel con el contenido que necesitás.</p>
+      </div>
+</div>
+      
+</div>
+
+      <div class="row g-4 justify-content-center w-100 mx-auto" style="max-width: 1140px;">
+        
+        <div class="col-md-4">
+          <div class="card h-100 text-center d-flex flex-column justify-content-between p-4">
+            <div>
+              <div class="info-box-title justify-content-center text-primary m-0">
+                <i class="bi bi-music-note-beamed"></i> Basico
+              </div>
+              <h2 class="fw-bold my-4">$15.000 <span class="fs-6 text-muted fw-normal">/ mes</span></h2>
+              <hr class="opacity-25">
+              <ul class="text-start mx-auto p-0 mt-3" style="max-width: 220px; list-style: none;">
+                <li class="py-2"><i class="bi bi-check-circle-fill text-success small"></i> Material de Ejercicios</li>
+                <li class="py-2"><i class="bi bi-check-circle-fill text-success small"></i> Ritmos Completos</li>
+                <li class="py-2"><i class="bi bi-check-circle-fill text-success small"></i> Estilos Variados</li>
+              </ul>
+            </div>
+            <div class="mt-4">
+              <button class="btn btn-outline-adaptive w-100 rounded-pill py-2" onclick="adquirirPlan('Basico')">Adquirir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 text-center d-flex flex-column justify-content-between p-4">
+            <div>
+              <div class="info-box-title justify-content-center text-primary m-0">
+                <i class="bi bi-lightning-charge-fill"></i> Plus
+              </div>
+              <h2 class="fw-bold my-4">$30.000 <span class="fs-6 text-muted fw-normal">/ mes</span></h2>
+              <hr class="opacity-25">
+              <ul class="text-start mx-auto p-0 mt-3" style="max-width: 220px; list-style: none;">
+                <li class="py-2"><i class="bi bi-check-circle-fill text-success small"></i> Todo lo del Plan Básico</li>
+                <li class="py-2"><i class="bi bi-check-circle-fill text-success small"></i> Material de Improvisación</li>
+                <li class="py-2"><i class="bi bi-check-circle-fill text-success small"></i> Estructuras y Matices</li>
+              </ul>
+            </div>
+            <div class="mt-4">
+              <button class="btn btn-outline-adaptive w-100 rounded-pill py-2" onclick="adquirirPlan('Plus')">Adquirir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 text-center d-flex flex-column justify-content-between p-4">
+            <div>
+              <div class="info-box-title justify-content-center text-primary m-0" style="color: #6f42c1;">
+                <i class="bi bi-gem"></i> Premium
+              </div>
+              <h2 class="fw-bold my-4">$50.000 <span class="fs-6 text-muted fw-normal">/ mes</span></h2>
+              <hr class="opacity-25">
+              <ul class="text-start mx-auto p-0 mt-3" style="max-width: 220px; list-style: none;">
+                <li class="py-2"><i class="bi bi-check-circle-fill text-success small"></i> Acceso Total a la Plataforma</li>
+                <li class="py-2"><i class="bi bi-check-circle-fill text-success small"></i> 4 Clases Virtuales al mes</li>
+              </ul>
+            </div>
+            <div class="mt-4">
+              <button class="btn btn-outline-adaptive w-100 rounded-pill py-2" onclick="adquirirPlan('Premium')">Adquirir</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <br>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width: 420px;">
+        <div class="modal-content p-4 text-center shadow-lg" style="border-radius: 24px; border: none; background-color: var(--bg-card, #ffffff);">
+          
+          <div class="text-end">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-0">
+            <img 
+    src="https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/logo%20Drumclass1.PNG" 
+    alt="Logo o Imagen" 
+    class="img-fluid rounded" 
+    style="
+      width: 40%; 
+      height: 40%; 
+      object-fit: cover; 
+      transform: scale(1.0);
+    "> 
+    <div class="mb-4"></div>
+            <p class="text-muted mb-4">Ingresa tus credenciales para acceder.</p>
+            
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="userInput" placeholder="user"
+                     onkeypress="if(event.key==='Enter') document.getElementById('passInput').focus()">
+              <label for="userInput">Usuario</label>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="form-floating flex-grow-1">
+                <input type="password" class="form-control" id="passInput" placeholder="Contraseña"
+                       style="border-top-right-radius: 0; border-bottom-right-radius: 0;"
+                       onkeypress="if(event.key==='Enter') validarEntrada()">
+                <label for="passInput">Contraseña</label>
+              </div>
+              <button class="btn btn-outline-secondary" type="button"
+                      style="border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;"
+                      onclick="togglePassword()">
+                <i class="bi bi-eye" id="toggleIcon"></i>
+              </button>
+            </div>
+
+            <button class="btn btn-premium-login btn-lg mx-auto py-3 mt-2 shadow-sm d-flex align-items-center justify-content-center gap-2" style="border-radius: 12px; width: fit-content;" onclick="validarEntrada()">
+              <i class="bi bi-box-arrow-in-right"></i> Entrar al Portal
+            </button>
+            
+            <div id="loginStatus" class="mt-4"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="pagoModal" tabindex="-1" aria-labelledby="pagoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width: 440px;">
+        <div class="modal-content p-4 text-center shadow-lg" style="border-radius: 24px; border: none; background-color: var(--bg-card, #ffffff);">
+          
+          <div class="text-end">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body p-0">
+            <div class="mb-4">
+              <i class="bi bi-credit-card-2-front text-primary" style="font-size: 3rem;"></i>
+            </div>
+            
+            <h2 class="fw-bold mb-2">Suscribite al Plan <span id="modalPlanNombre" class="text-primary"></span></h2>
+            <p class="text-muted mb-4">Seguí las instrucciones para activar tu acceso al instante.</p>
+            
+            <div class="p-3 mb-4 text-start caja-pago-detalles">
+              <div class="mb-2">
+                <small class="text-muted d-block">Monto ARS$ a transferir:</small>
+                <strong class="fs-4" id="modalPlanMonto" style="color: var(--text-primary);">$0</strong>
+              </div>
+              <div class="mb-2">
+                <small class="text-muted d-block">Alias Mercado Pago:</small>
+                <strong class="fs-6" style="color: var(--text-primary); font-family: monospace;">lucaspe98</strong>
+              </div>
+              <div>
+                <small class="text-muted d-block">CUIT:</small>
+                <strong class="fs-6" style="color: var(--text-primary); font-family: monospace;">20-41058914-2</strong>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-2 text-start mb-4 px-2">
+              <i class="bi bi-info-circle-fill text-primary mt-1"></i>
+              <p class="m-0 small text-muted">Una vez hecha la transferencia, presioná el botón de abajo para enviar el comprobante por WhatsApp y procesar tu alta.</p>
+            </div>
+
+            <a id="btnEnviarWhatsapp" href="#" target="_blank" class="btn btn-success btn-lg w-100 py-3 shadow-sm d-flex align-items-center justify-content-center gap-2" style="border-radius: 12px; font-weight: 600; background-color: #25D366; border: none;">
+              <i class="bi bi-whatsapp"></i> Compartir Comprobante
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="mainContent" class="d-none flex-column min-vh-100">
+
+    <!-- ======================================================== -->
+    <!-- AQUÍ DEBES PEGAR TODO EL HTML DE TU ARCHIVO NAVBAR.HTML  -->
+    <!-- ======================================================== -->
+    {% include navbar.html %}
+    <div class="container-fluid flex-grow-1 pt-3 mt-1 px-3 d-flex flex-column">
+      <div class="flex-grow-1">
+        {% include pages.html %}
+        <!-- ======================================================== -->
+        <!-- AQUÍ DEBES PEGAR TODO EL HTML DE TU ARCHIVO PAGES.HTML   -->
+        <!-- ======================================================== -->
+
+      </div>
+      <div id="searchResults" class="mt-4"></div>
+    </div> 
+
+    <footer class="bg-dark text-light text-center py-3 mt-auto shadow-lg"
+            style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;">
+      <span class="typing-text">© 2026 Drumclass by Lucas Peña</span>
+    </footer>
+
+  </div>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="border-radius: 16px; overflow: hidden; border: none; background-color: #000000;">
+        <div class="modal-header border-0 position-absolute top-0 end-0" style="z-index: 1051;">
+          <button type="button" class="btn-close btn-close-white bg-dark p-2 rounded-circle" data-bs-dismiss="modal" aria-label="Close" onclick="detenerVideo()"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe id="videoIframe" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="pdfModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-0">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title">Visualizador de Material</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0" style="height: 75vh;">
+          <iframe 
+            id="pdfViewer" 
+            src="" 
+            width="100%" 
+            height="100%" 
+            style="border:none; background:white;">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Llamada al archivo JavaScript estático -->
+  <script src="app.js"></script>
+  
+</body>
+</html>

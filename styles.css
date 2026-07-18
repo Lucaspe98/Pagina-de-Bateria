@@ -1,0 +1,1275 @@
+/* Importación de fuentes oficiales */
+  @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap');
+
+  /* Fondo crema plano exclusivo para modo claro */
+  body:not(.dark) {
+    background: #131E30 !important;
+  }
+
+  
+
+    body.dark {
+      --text-brand-adaptive: #8ab4f8; /* Azul Google adaptativo */
+      --btn-outline-adaptive: #8ab4f8;
+    }
+
+    /* Clases de control de color */
+    .text-brand-adaptive {
+      color: var(--text-brand-adaptive) !important;
+    }
+
+    /* Redirección contextual de Bootstrap text-primary en esta pantalla */
+    #loginScreen .text-primary, 
+    #loginModal .text-primary,
+    #pagoModal .text-primary {
+      color: var(--text-brand-adaptive) !important;
+    }
+
+    /* Botones de adquisición adaptativos */
+    .btn-outline-adaptive {
+      color: var(--btn-outline-adaptive) !important;
+      border-color: var(--btn-outline-adaptive) !important;
+      font-weight: 500;
+      transition: var(--transition-cards);
+    }
+
+    .btn-outline-adaptive:hover {
+      background-color: var(--btn-outline-adaptive) !important;
+      color: #ffffff !important;
+      border-color: var(--btn-outline-adaptive) !important;
+    }
+
+    /* Efectos dinámicos en Tarjetas de Planes */
+    #loginScreen .card {
+      transition: var(--transition-cards);
+    }
+
+    /* Hover Modo Claro: Degradado Coral / Durazno */
+    #loginScreen .card:hover {
+      transform: translateY(-5px);
+      background: linear-gradient(135deg, #FFFFFF, #0078D7) !important;
+      border-color: transparent !important;
+      box-shadow: 0 12px 24px rgba(250, 154, 132, 0.3);
+    }
+
+    /* Hover Modo Oscuro: Degradado Azul / Púrpura de Google */
+    body.dark #loginScreen .card:hover {
+      background: linear-gradient(135deg, #1a73e8, #6f42c1) !important;
+      box-shadow: 0 12px 24px rgba(111, 66, 193, 0.3);
+    }
+
+    /* Mutación de textos internos durante el Hover */
+    #loginScreen .card:hover *,
+    #loginScreen .card:hover .text-muted,
+    #loginScreen .card:hover .text-success {
+      color: #ffffff !important;
+    }
+
+    #loginScreen .card:hover hr {
+      border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+
+    /* Ajuste del botón outline dentro de la tarjeta en Hover */
+    #loginScreen .card:hover .btn-outline-adaptive {
+      background-color: #ffffff !important;
+      color: #D94F37 !important;
+      border-color: #ffffff !important;
+    }
+
+    body.dark #loginScreen .card:hover .btn-outline-adaptive {
+      color: #1a73e8 !important;
+    }
+
+    /* Desactivar resplandor azul nativo en inputs del Login */
+    #loginModal .form-control:focus {
+      border-color: #FA9A84 !important;
+      box-shadow: 0 0 0 3px rgba(250, 154, 132, 0.25) !important;
+    }
+
+    body.dark #loginModal .form-control:focus {
+      border-color: #8ab4f8 !important;
+      box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.25) !important;
+    }
+
+    /* Caja de detalles de pago (Mercado Pago / Transferencia) */
+    .caja-pago-detalles {
+      background-color: rgba(250, 154, 132, 0.05);
+      border: 1px dashed #FA9A84;
+      border-radius: 16px;
+    }
+
+    body.dark .caja-pago-detalles {
+      background-color: rgba(138, 180, 248, 0.05);
+      border: 1px dashed #8ab4f8;
+    }
+
+    /* =========================================
+       BOTÓN PREMIUM LOGIN ADAPTATIVO (¡NUEVO!)
+    ========================================= */
+    .btn-premium-login {
+      background: linear-gradient(135deg, #FFFFFF, #0078D7); /* BLANCO/AZUL en Modo Claro */
+      color: #ffffff !important;
+      border: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(250, 154, 132, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-premium-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px #0D0D3D;
+      background: linear-gradient(135deg, #0078D7, #FFFFFF); /* Variación más intensa al pasar el cursor */
+    }
+
+    /* Cambio de comportamiento para Modo Oscuro (Azul/Púrpura) */
+    body.dark .btn-premium-login {
+      background: linear-gradient(135deg, #1a73e8, #6f42c1);
+      box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+    }
+
+    body.dark .btn-premium-login:hover {
+      background: linear-gradient(135deg, #155cb4, #5a32a3);
+      box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+    }
+
+    /* Efecto de destello de luz (Shimmer) */
+    .btn-premium-login::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      transition: 0.75s;
+      opacity: 0;
+    }
+
+    .btn-premium-login:hover::after {
+      left: 125%;
+      opacity: 1;
+    }
+  
+  :root {
+    --text-brand-adaptive: #EBEBEB ; /* Coral profundo legible */
+    --btn-outline-adaptive: #EBEBEB ;
+    --transition-cards: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --google-blue: #1a73e8;
+    --google-blue-hover: #1765cc;
+    
+    /* PALETA CLARA CALMADA (Color crema de fondo) */
+    --bg-page: #EBEBEB;       
+    --bg-card: #ffffff;       
+    --nav-bg: rgba(251, 247, 238, 0.9); 
+    
+    --google-gray-50: #f5efe2;   
+    --google-gray-100: #ede4d3;  
+    --google-gray-300: #dfd5c2;  
+    --google-gray-600: #5f6368;
+    
+    --border-radius-xl: 28px;
+    --border-radius-lg: 16px;
+    
+    --text-link: #2d2f31;       
+    --text-secondary: #FFFFFF;
+    
+    --transition-google: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body, html {
+    overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
+  }
+
+
+  /* MODO OSCURO - Estructura base */
+  body.dark {
+    --bg-page: #2b2c2f; /* Fondo principal: un gris carbón más claro */
+    --bg-card: #35363a; 
+    --text-link: #e8eaed;    
+    --text-secondary: #ffffff;  
+    --nav-bg: rgba(43, 44, 47, 0.9); 
+    --google-gray-300: #505357; 
+    --google-gray-100: #424549; 
+  }
+
+ /* Cards en Modo Oscuro (Fondo y sombra idénticos a card2) */
+  body.dark .card {
+    background: #1B2E4C !important; 
+    border-color: transparent !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Control de contraste: Texto oscuro sobre fondo claro en modo oscuro */
+  body.dark .card,
+  body.dark .card p,
+  body.dark .card h1,
+  body.dark .card h2,
+  body.dark .card h3,
+  body.dark .card h4,
+  body.dark .card h5,
+  body.dark .card h6,
+  body.dark .card i,
+  body.dark .card li,
+  body.dark .card span,
+  body.dark .card .text-muted,
+  body.dark .card .text-secondary,
+  body.dark .card a {
+    color: #CCCCCC !important;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+    color: var(--text-link);
+    margin: 0;
+    transition: background-color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 1. Las letras de los ítems (A:, B:, etc.) se quedan negras en modo claro */
+  body:not(.dark) .page strong {
+    color: #EBEBEB  !important;
+  }
+
+  /* 2. ÚNICAMENTE las manos acentuadas dentro del ritmo se pintan de coral */
+  body:not(.dark) .ritmo-bateria strong {
+    color: #D94F37 !important;
+  }
+
+  /* =========================================
+     NAVBAR ESTILO GOOGLE & PERSONALIZADA (COLOR PLANO #ED6A5A)
+  ========================================= */
+  .navbar {
+    background: #1B2E4C !important; 
+    border-bottom: none !important; 
+    padding: 0.75rem 1.5rem !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1030;
+    transition: background 0.3s ease;
+  }
+
+  /* Letras del logo/marca en blanco */
+  .navbar-brand {
+    font-weight: 500;
+    color: #ffffff !important; 
+    font-size: 22px;
+    transition: var(--transition-google);
+  }
+
+  /* Logo oscuro al pasar el cursor */
+  .navbar-brand:hover {
+    color: #EBEBEB  !important; 
+  }
+
+  /* Letras de los links en blanco */
+  .nav-link {
+    color: #ffffff !important; 
+    font-weight: 500;
+    padding: 8px 18px !important;
+    border-radius: var(--border-radius-xl);
+    transition: var(--transition-google);
+  }
+
+  /* Links oscuros al pasar el cursor */
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important; 
+    color: #EBEBEB  !important; 
+  }
+
+  /* =========================================
+     MODO OSCURO PARA EL NAVBAR (COLOR PLANO #1B2E4C)
+  ========================================= */
+  body.dark .navbar {
+    background: #1B2E4C !important; 
+  }
+
+  body.dark .navbar-brand {
+    color: #ffffff !important;
+  }
+
+  body.dark .navbar-brand:hover {
+    color: #EBEBEB  !important; 
+  }
+
+  body.dark .nav-link {
+    color: #EBEBEB  !important; 
+  }
+
+  body.dark .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important; 
+    color: #ffffff !important; 
+  }
+
+  /* Botón de cambio de tema */
+  .btn-theme-toggle {
+    background-color: var(--google-gray-100);
+    color: #1B2E4C; 
+    border: none;
+    border-radius: 12px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-google);
+  }
+
+  .btn-theme-toggle:hover {
+    background-color: #15244A;
+    color: white;
+    transform: rotate(15deg);
+  }
+
+  body.dark .btn-theme-toggle {
+    background-color: #3c4043;
+    color: #fbd34d; 
+  }
+
+  body.dark .btn-theme-toggle:hover {
+    background-color: #4a4d51;
+  }
+
+  /* Botón Salir */
+  .btn-logout {
+    background-color: #fce8e6; 
+    color: #d93025; 
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: var(--transition-google);
+  }
+
+  .btn-logout:hover {
+    background-color: #d93025;
+    color: white;
+    box-shadow: 0 2px 8px rgba(217, 48, 37, 0.3);
+  }
+
+  body.dark .btn-logout {
+    background-color: #3c4043;
+    color: #ff6b6b;
+  }
+
+  body.dark .btn-logout:hover {
+    background-color: #d93025;
+    color: white;
+  }
+
+  /* =========================================
+      BUSCADOR DEL NAV
+  ========================================= */
+  #searchInput {
+    background-color: var(--google-gray-50);
+    border: 1px solid var(--google-gray-300);
+    border-radius: var(--border-radius-xl);
+    padding: 8px 20px;
+    color: var(--text-link);
+    transition: var(--transition-google);
+  }
+
+  #searchInput:focus {
+    border-color: #15244A !important;
+    box-shadow: 0 0 0 3px rgba(250, 154, 132, 0.25) !important;
+    background-color: #ffffff !important;
+    outline: none;
+  }
+
+  body.dark #searchInput {
+    background-color: #3c4043 !important;
+    border: 1px solid #5f6368 !important;
+    color: #ffffff !important;
+  }
+
+  body.dark #searchInput:focus {
+    border-color: #8ab4f8 !important;
+    box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.25) !important;
+  }
+
+  #searchDropdown {
+    background: var(--bg-card); 
+    border: 1px solid var(--google-gray-300);
+    border-radius: 0 0 16px 16px;
+    margin-top: 5px;
+  }
+
+  body.dark .navbar-toggler {
+    border-color: #5f6368 !important;
+  }
+  body.dark .navbar-toggler-icon {
+    filter: invert(1); 
+  }
+
+  /* =========================================
+      LINKS DE PÁGINAS
+  ========================================= */
+  .page a {
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    color: var(--text-link) !important;
+    transition: var(--transition-google);
+  }
+
+  .page a:hover {
+    color: var(--google-blue) !important;
+    transform: translateY(-2px);
+  }
+
+  /* =========================================
+      TARJETAS Y EFECTOS HOVER (INVERTIDOS)
+  ========================================= */
+  .card {
+    background: linear-gradient(135deg, #1B2E4C, #1B2E4C) !important;
+    border: none !important; 
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    padding: 1.25rem !important;
+    transition: none !important;
+    color: #EBEBEB  !important;
+  }
+
+  .cardvideo {
+  position: relative !important; 
+  /* Agregamos el linear-gradient superpuesto a la imagen para oscurecerla */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/imagen%20ref%20web2.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border: none !important; 
+  border-radius: var(--border-radius-lg) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important; 
+  height: 250px; 
+  overflow: hidden !important; 
+  cursor: pointer;
+}
+
+  .cardvideogrip {
+  position: relative !important; 
+  /* Agregamos el linear-gradient superpuesto a la imagen para oscurecerla */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/imagen%20ref%20web%20grip.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border: none !important; 
+  border-radius: var(--border-radius-lg) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important; 
+  height: 250px; 
+  overflow: hidden !important; 
+  cursor: pointer;
+}
+
+/* Capa intermedia para centrar el ícono y manejar el cambio de fondo */
+.play-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2); /* Un sutil oscurecido inicial para que el play blanco resalte */
+  transition: background 0.3s ease; /* Transición suave para el hover */
+}
+
+/* El ícono de Play por defecto (Blanco) */
+.play-icon {
+  font-size: 4rem; /* Tamaño del ícono */
+  color: #FFFFFF;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* --- ESTADO HOVER --- */
+
+/* 1. El fondo pasa a ser un blanco transparente */
+.cardvideo:hover .play-container {
+  background: rgba(255, 255, 255, 0.75) !important; /* Blanco con 75% de opacidad */
+}
+
+/* 2. El ícono de play se vuelve más oscuro y gana un pequeño efecto de escala */
+.cardvideo:hover .play-icon {
+  color: #1B2E4C !important; /* Usé el azul oscuro de tu paleta original */
+  transform: scale(1.15); /* Crece un poquito al pasar el mouse, queda muy pro */
+}
+
+.cardvideogrip:hover .play-container {
+  background: rgba(255, 255, 255, 0.75) !important; /* Blanco con 75% de opacidad */
+}
+
+/* 2. El ícono de play se vuelve más oscuro y gana un pequeño efecto de escala */
+.cardvideogrip:hover .play-icon {
+  color: #1B2E4C !important; /* Usé el azul oscuro de tu paleta original */
+  transform: scale(1.15); /* Crece un poquito al pasar el mouse, queda muy pro */
+}
+
+  /* Estado Normal: Forzar texto a gris oscuro */
+  .card,
+  .card p,
+  .card h1,
+  .card h2,
+  .card h3,
+  .card h4,
+  .card h5,
+  .card h6,
+  .card i,
+  .card li,
+  .card span,
+  .card .text-muted,
+  .card .text-secondary,
+  .card a {
+    color: #EBEBEB  !important;
+  }
+
+  /* Hover Modo Claro: Fondo crema original */
+  .card:hover {
+    transform: translateY(-4px); /* Animación de elevación al pasar el mouse */
+    background: #FDF4E3 !important;
+    border-color: #e1e5eb !important;
+    box-shadow: 0 4px 12px rgba(60, 64, 67, 0.05) !important;
+  }
+
+  /* Hover Modo Claro: Volver el texto al color oscuro original */
+  .card:hover,
+  .card:hover p,
+  .card:hover h1,
+  .card:hover h2,
+  .card:hover h3,
+  .card:hover h4,
+  .card:hover h5,
+  .card:hover h6,
+  .card:hover i,
+  .card:hover li,
+  .card:hover span,
+  .card:hover .text-muted,
+  .card:hover .text-secondary,
+  .card:hover a {
+    color: #EBEBEB  !important; /* Color gris  estándar */
+  }
+
+  /* Hover Modo Oscuro: Tu nuevo color plano #E6EBE0 con sombra sutil */
+  body.dark .card:hover {
+    background: #E6EBE0 !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-4px);
+  }
+
+  /* Forzar texto oscuro en el Hover del Modo Oscuro por el fondo claro */
+  body.dark .card:hover,
+  body.dark .card:hover p,
+  body.dark .card:hover h1,
+  body.dark .card:hover h2,
+  body.dark .card:hover h3,
+  body.dark .card:hover h4,
+  body.dark .card:hover h5,
+  body.dark .card:hover h6,
+  body.dark .card:hover i,
+  body.dark .card:hover li,
+  body.dark .card:hover span,
+  body.dark .card:hover .text-muted,
+  body.dark .card:hover .text-secondary,
+  body.dark .card:hover a {
+    color: #EBEBEB  !important;
+  }
+
+  .card:hover hr {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .card i {
+    margin-bottom: 10px;
+    display: block;
+    opacity: 0.9;
+  }
+
+
+
+  /* =========================================
+      COMPONENTES EXTRA
+  ========================================= */
+  /* Clase para ocultar la barra de scroll sin perder la funcionalidad */
+.sin-scrollbar::-webkit-scrollbar {
+  display: none; /* Oculta la barra en Chrome, Safari y Edge */
+}
+
+.sin-scrollbar {
+  -ms-overflow-style: none;  /* Oculta la barra en Internet Explorer y Edge antiguo */
+  scrollbar-width: none;  /* Oculta la barra en Firefox */
+}
+  .bg-light {
+    background-color: var(--google-gray-100) !important;
+    border: 1px solid var(--google-gray-300) !important;
+    color: var(--text-link) !important;
+    font-weight: 500;
+  }
+
+  footer {
+    background-color: var(--google-gray-50) !important;
+    color: var(--google-gray-600) !important;
+    border-top: 1px solid var(--google-gray-300);
+    padding: 20px;
+    margin-top: 60px;
+  }
+
+  body.dark footer {
+    background-color: #171717 !important;
+    border-top-color: #3c4043;
+  }
+
+  .page { display: none; padding-top: 20px; }
+  .page.active { display: block !important; }
+
+  
+  /* CAJA DE ALERTA ESTILO GOOGLE */
+  .instruccion-tecnica {
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: var(--border-radius-lg);
+    background: #426295 !important; 
+    border: none; /* Quitamos bordes perimetrales */
+    border-left: 6px solid #15244A; /* Oscurecemos el borde izquierdo para que se note sobre la base */
+    transition: var(--transition-google);
+    color: #EBEBEB  !important; /* Aseguramos que el texto sea gris */
+  }
+
+  .instruccion-tecnica .text-primary {
+    color: #D94F37 !important; 
+  }
+
+  body.dark .instruccion-tecnica {
+    background: #426295 !important; /* Tono gris oscuro clásico de interfaces */
+    border-color: transparent !important;
+    border-left: 6px solid #5f6368 !important; /* Borde de alerta en un gris un poco más claro */
+  }
+
+  /* Forzar texto claro en instruccion-tecnica dentro de Modo Oscuro por el fondo gris oscuro */
+  body.dark .instruccion-tecnica,
+  body.dark .instruccion-tecnica p,
+  body.dark .instruccion-tecnica h1,
+  body.dark .instruccion-tecnica h2,
+  body.dark .instruccion-tecnica h3,
+  body.dark .instruccion-tecnica h4,
+  body.dark .instruccion-tecnica h5,
+  body.dark .instruccion-tecnica h6,
+  body.dark .instruccion-tecnica strong,
+  body.dark .instruccion-tecnica i,
+  body.dark .instruccion-tecnica li,
+  body.dark .instruccion-tecnica span,
+  body.dark .instruccion-tecnica .text-muted,
+  body.dark .instruccion-tecnica .text-secondary,
+  body.dark .instruccion-tecnica a {
+    color: #ffffff !important;
+  }
+
+  body.dark .instruccion-tecnica .text-primary {
+    color: #8ab4f8 !important; /* Mantenemos el celeste para resaltar la palabra primaria, si querés podés ponerlo en #EBEBEB  también */
+  }
+
+  .instruccion-tecnica i.main-icon {
+    font-size: 1.4rem;
+    color: #15244A; 
+    margin-top: 2px;
+  }
+
+  body.dark .instruccion-tecnica i.main-icon {
+    color: #8ab4f8; /* Mantenemos el ícono principal celeste para contraste */
+  }
+
+  .codigo-web {
+    font-family: 'Roboto Mono', monospace;
+    background-color: rgba(0,0,0,0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  body.dark .codigo-web {
+    background-color: rgba(255,255,255,0.1);
+    color: #ffffff;
+  }
+
+  .info-box {
+    background-color: #1B2E4C !important; /* Nuevo fondo claro */
+    border-radius: 20px;
+    padding: 24px !important;
+    margin-top: 24px;
+    box-shadow: 0 1px 2px rgba(60,64,67,0.1);
+  }
+
+  body.dark .info-box {
+    background-color: #1B2E4C !important;
+    border-color: transparent !important;
+    box-shadow: none;
+  }
+
+  .info-box ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .info-box li {
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+ 
+  .info-box-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;   
+}
+
+  body.dark .info-box-title {
+  color: var(--text-secondary) !important; /* Igualamos al color del título principal */
+}
+
+  body.dark .info-box,
+  body.dark .info-box p,
+  body.dark .info-box li,
+  body.dark .info-box div,
+  body.dark .info-box strong,
+  body.dark .info-box-title {
+    color: #EBEBEB  !important; 
+  }
+
+  body.dark strong {
+    color: #ffffff !important;
+    font-weight: 700;
+  }
+
+  body.dark .text-body {
+    color: var(--text-link) !important;
+  }
+
+  body.dark .badge.bg-dark {
+    background-color: #45494e !important;
+    color: #ffffff !important;
+    border: 1px solid var(--google-gray-300);
+  }
+
+  #searchDropdown .list-group-item {
+    cursor: pointer;
+    border: none;
+  }
+
+  #searchDropdown .list-group-item:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+  }
+
+  mark {
+    padding: 0;
+    border-radius: 3px;
+  }
+
+  body.dark mark.custom-highlight {
+    background-color: #ffd600; 
+    color: #000;
+  }
+
+  body.dark #searchDropdown {
+    background-color: var(--bg-card);
+    border-color: var(--google-gray-300);
+  }
+
+  body.dark #searchDropdown .list-group-item {
+    background-color: var(--bg-card);
+    color: var(--text-link);
+  }
+
+  body.dark .form-control {
+    background-color: #3c4043 !important;
+    color: white !important;
+  }
+
+  body.dark .form-floating label {
+    color: #bdc1c6 !important;
+  }
+
+  body.dark .form-control:focus {
+    background-color: #3c4043 !important;
+    color: #ffffff !important;
+    border-color: var(--google-blue) !important;
+    box-shadow: 0 0 0 0.25rem rgba(26, 115, 232, 0.25);
+  }
+
+  body.dark .input-group .btn-outline-secondary {
+    border-color: #5f6368 !important;
+    color: #bdc1c6 !important;
+    background-color: #3c4043 !important;
+  }
+
+  body.dark .input-group .btn-outline-secondary:hover {
+    background-color: #4a4d51 !important;
+    color: white !important;
+  }
+
+  body.dark .form-control::placeholder {
+    color: #80868b !important;
+  }
+
+
+
+  /* =========================================
+      COMPONENTES DE MÚSICA (BATERÍA)
+  ========================================= */
+  .ritmo-bateria {
+    font-family: 'Courier New', Courier, monospace; 
+    white-space: pre-wrap; 
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 1.05rem;
+    border: 1px solid var(--google-gray-300);
+    background-color: var(--google-gray-50);
+    color: var(--text-link);
+  }
+
+  .ritmo-bateria strong {
+    color: var(--google-blue) !important;
+    font-weight: 800 !important;
+  }
+
+  body.dark .ritmo-bateria {
+    background-color: #1a1b1e !important; 
+    border-color: #5f6368;
+    color: #e8eaed !important;
+  }
+
+  body.dark .ritmo-bateria strong {
+    color: #8ab4f8 !important; 
+  }
+
+  /* =========================================
+      BOTÓN PREMIUM LOGIN Y ADAPTACIONES
+  ========================================= */
+  .btn-premium-login {
+    background: linear-gradient(135deg, #FFFFFF, #0078D7);
+    color: #ffffff !important;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(111, 66, 193, 0.25);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-premium-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+    background: linear-gradient(135deg, #155cb4, #5a32a3);
+  }
+
+  .btn-premium-login:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(26, 115, 232, 0.3);
+  }
+
+  .btn-premium-login::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    transition: 0.75s;
+    opacity: 0;
+  }
+
+  .btn-premium-login:hover::after {
+    left: 125%;
+    opacity: 1;
+  }
+
+  body.dark .card hr {
+    border-color: var(--google-gray-300);
+  }
+
+  body.dark .text-muted {
+    color: var(--text-secondary) !important;
+  }
+
+  /* =========================================
+    CARD2: ESTÁTICA CON GRADIENTE PERMANENTE
+  ========================================= */
+  .card2 {
+    background: linear-gradient(135deg, #1B2E4C, #1B2E4C) !important;
+    border: none !important; 
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 24px rgba(0, 120, 215, 0.25); 
+    padding: 1.25rem !important;
+    transition: none !important;
+    color: #EBEBEB  !important; 
+}
+
+  .card2,
+  .card2 p,
+  .card2 h1,
+  .card2 h2,
+  .card2 h3,
+  .card2 h4,
+  .card2 h5,
+  .card2 h6,
+  .card2 i,
+  .card2 li,
+  .card2 span,
+  .card2 .text-muted,
+  .card2 .text-secondary,
+  .card2 a {
+    color: #EBEBEB  !important;
+  }
+
+  /* Modo Oscuro para la Card2 cambiada al plano #1B2E4C */
+  body.dark .card2 {
+    background: #1B2E4C !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Forzar texto oscuro en Card2 dentro de Modo Oscuro */
+  body.dark .card2,
+  body.dark .card2 p,
+  body.dark .card2 h1,
+  body.dark .card2 h2,
+  body.dark .card2 h3,
+  body.dark .card2 h4,
+  body.dark .card2 h5,
+  body.dark .card2 h6,
+  body.dark .card2 strong,
+  body.dark .card2 i,
+  body.dark .card2 li,
+  body.dark .card2 span,
+  body.dark .card2 .text-muted,
+  body.dark .card2 .text-secondary,
+  body.dark .card2 a {
+    color: #EBEBEB  !important;
+  }
+
+  .card2 {
+    height: auto;
+    overflow-y: visible;
+  }
+
+  @media (min-width: 768px) {
+    .card2 {
+      height: 450px;
+      overflow-y: auto;
+    }
+  }
+
+  /* =========================================
+      EFECTO REVEAL PREMIUM
+  ========================================= */
+  .reveal {
+    opacity: 0;
+    transform: translateY(15px); 
+    transition: opacity 2s cubic-bezier(0.215, 0.610, 0.355, 1), 
+                transform 2s cubic-bezier(0.215, 0.610, 0.355, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .auto-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+  }
+
+  .auto-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* =========================================
+      SISTEMA DE PROGRESO (BLOQUEO DE CARDS)
+  ========================================= */
+  .card-progression {
+    position: relative;
+    transition: all 0.5s ease;
+  }
+
+  .card-progression.locked, 
+  .locked {
+    position: relative;
+    overflow: hidden;         
+    pointer-events: none;     
+    user-select: none;        
+    border: 1px solid #343a40;
+  }
+
+  .card-progression:not(.locked) {
+    pointer-events: auto !important;
+  }
+
+  .card-progression.locked::before, 
+  .locked::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #5a6268 0%, #23272b 100%) !important;
+    z-index: 10;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .card-progression.locked::after, 
+  .locked::after {
+    content: "" !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3.5rem;
+    height: 3.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ced4da' viewBox='0 0 16 16'%3E%3Cpath d='M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 21 !important; 
+    opacity: 0.85 !important;
+  }
+
+  @keyframes unlockFlash {
+    0% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.03); filter: brightness(1.4); }
+    100% { transform: scale(1); filter: brightness(1); }
+  }
+
+  .just-unlocked {
+    animation: unlockFlash 0.6s ease-out;
+  }
+
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform; 
+  }
+
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+
+  .elemento-animado {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animacion-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #pdfModal .modal-body {
+    overflow: auto;
+}
+
+#pdfViewer{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+/* =========================================
+     TÍTULOS BLANCOS EN MODO CLARO Y OSCURO
+  ========================================= */
+  
+  /* 1. Títulos principales de sección */
+  h1.text-secondary,
+  h2.text-secondary,
+  h3.text-secondary,
+  h4.text-secondary,
+  h5.text-secondary,
+  h6.text-secondary,
+  body.dark h1.text-secondary,
+  body.dark h2.text-secondary,
+  body.dark h3.text-secondary,
+  body.dark h4.text-secondary,
+  body.dark h5.text-secondary,
+  body.dark h6.text-secondary {
+    color: #EBEBEB !important;
+  }
+
+  /* 2. Títulos de las cajas de información (Ejercicios, Ritmos, etc.) */
+  .info-box-title,
+  body.dark .info-box-title {
+    color: #ffffff !important;
+  }
+  /* =========================================
+     PUNTOS Y LETRAS (A:, B:, C:) EN BLANCO (SOLO MODO CLARO)
+  ========================================= */
+  
+  /* Se aplica únicamente cuando el body NO tiene la clase .dark */
+  body:not(.dark) .info-box li > i.bi-dot,
+  body:not(.dark) .info-box li > strong {
+    color: #ffffff !important;
+  }
+/* =========================================
+     TÍTULOS BLANCOS EN MODO OSCURO
+  ========================================= */
+  body.dark h1,
+  body.dark h2,
+  body.dark h3,
+  body.dark h4,
+  body.dark h5,
+  body.dark h6,
+  body.dark .card h1,
+  body.dark .card h2,
+  body.dark .card h3,
+  body.dark .card h4,
+  body.dark .card h5,
+  body.dark .card h6,
+  body.dark .card2 h1,
+  body.dark .card2 h2,
+  body.dark .card2 h3,
+  body.dark .card2 h4,
+  body.dark .card2 h5,
+  body.dark .card2 h6,
+  body.dark .info-box-title {
+    color: #ffffff !important;
+  }
+
+ /* =========================================
+     ADAPTACIÓN PARA MÓVILES (iPhone 12 / < 768px)
+     ========================================= */
+  @media (max-width: 991.98px) {
+
+    .info-box {
+    padding: 15px !important; /* Reducimos un poco el padding general para dar espacio */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .info-box-title {
+    padding-left: 15px !important; /* Damos un pequeño respiro al título respecto al borde izquierdo */
+    margin-bottom: 20px !important; /* Un poco más de aire abajo del título */
+    justify-content: flex-start !important; /* Aseguramos que se alinee a la izquierda */
+  }
+
+  /* Si los títulos se ven muy grandes, los ajustamos */
+  .info-box-title i {
+    margin-right: 8px !important;
+  }
+    
+    /* 1. ESTRUCTURA: 100% DE ANCHO PARA TODOS LOS COMPONENTES */
+    .row, .contenedor-principal {
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 0 15px !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    /* ESTA LÍNEA ES LA MAGIA PARA EL TEXTO Y BOTONES APLASTADOS */
+    /* Apunta a todas las clases de columnas (col-8, col-4, col-md-3, etc) */
+    .row > *, [class*="col-"] {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 0 0 100% !important;
+      margin-bottom: 24px;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .card, .card2, .info-box, .componente {
+      width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      box-sizing: border-box;
+    }
+
+    /* 1. Aseguramos que el Navbar sea el ancla de las flechas */
+/* 1. Aseguramos que el Navbar sea el ancla de las flechas */
+.navbar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 1030 !important;
+    }
+    
+    /* Importante: compensa el espacio del navbar fijo */
+    body { padding-top: 70px; } 
+
+    /* Contenedor de scroll */
+    .navbar-collapse {
+        overscroll-behavior-x: contain;
+        touch-action: pan-x;
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scrollbar-width: none; /* Firefox */
+        mask-image: linear-gradient(to right, transparent, black 15px, black calc(100% - 15px), transparent);
+        cursor: grab;
+    }
+
+    .navbar-collapse::-webkit-scrollbar { display: none; }
+    
+    .navbar-collapse:active { cursor: grabbing; }
+
+}
+
+/* --- 3. ESTILOS COMPARTIDOS (Se mantienen igual) --- */
+.navbar-nav {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+.nav-item {
+    flex: 0 0 auto;
+}
+
+.d-flex.align-items-center.gap-2 {
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+#searchInput {
+    width: 120px !important;
+}
+
+.navbar-toggler {
+    display: none !important;
+}
+@media (min-width: 992px) {
+    .navbar::after, 
+    .scroll-indicator-left {
+        display: none !important;
+    }
+}
+
+.card-progression:not(.locked), 
+.card-progression:not(.locked) * {
+  pointer-events: auto !important;
+  user-select: auto !important;
+}
