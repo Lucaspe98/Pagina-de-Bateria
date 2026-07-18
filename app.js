@@ -119,15 +119,17 @@ async function validarEntrada() {
 
   try {
     // 1. Preparamos los datos como formulario simple
-    const datosFormulario = new URLSearchParams();
-    datosFormulario.append('usuario', userInput);
-    datosFormulario.append('pass', passInput);
+    const PROXY_URL = "https://corsproxy.io/?";
+const urlParaFetch = PROXY_URL + encodeURIComponent(URL_BACKEND);
 
-    // 2. Hacemos el fetch sin headers de JSON ni modo CORS
-    const respuesta = await fetch(URL_BACKEND, {
-      method: "POST",
-      body: datosFormulario 
-    });
+const datosFormulario = new URLSearchParams();
+datosFormulario.append('usuario', userInput);
+datosFormulario.append('pass', passInput);
+
+const respuesta = await fetch(urlParaFetch, {
+    method: "POST",
+    body: datosFormulario
+});
 
     // 3. Procesamos la respuesta
     const res = await respuesta.json();
