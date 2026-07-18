@@ -135,9 +135,6 @@ const respuesta = await fetch(URL_BACKEND, { // USA LA NUEVA URL AQUÍ
 const res = await respuesta.json(); // Ahora esto no debería fallar
 console.log("Respuesta:", res);
 
-    const res = await respuesta.json();
-    console.log("Respuesta servidor:", res);
-
     if (res && res.autorizado === true) {
       const modalEl = document.getElementById('loginModal');
       if (modalEl) {
