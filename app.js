@@ -563,6 +563,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }, observerOptions);
 
   targetElements.forEach(el => observer.observe(el));
+  // conexion con navbar y pages 
+  async function cargarIncludes() {
+  // Carga el navbar
+  const navRes = await fetch('_includes/navbar.html');
+  document.getElementById('navbar-container').innerHTML = await navRes.text();
+
+  // Carga las páginas
+  const pagesRes = await fetch('_includes/pages.html');
+  document.getElementById('pages-container').innerHTML = await pagesRes.text();
+}
+
+document.addEventListener("DOMContentLoaded", cargarIncludes);
 
   // Rutina secundaria (fallback) para verificar visibilidad
   const verificarVisibilidad = setInterval(() => {
