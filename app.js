@@ -106,10 +106,12 @@ window.addEventListener('load', async function() {
 
 // --- VALIDACIÓN DE ACCESO SEGURA ---
 async function validarEntrada() {
-  var userInput = document.getElementById('userInput').value.trim();
-  var passInput = document.getElementById('passInput').value.trim();
-  var status = document.getElementById('loginStatus');
+  // 1. Obtener elementos
+  const userInput = document.getElementById('userInput').value.trim();
+  const passInput = document.getElementById('passInput').value.trim();
+  const status = document.getElementById('loginStatus');
 
+  // 2. Validación básica
   if (!userInput || !passInput) {
     status.innerHTML = '<div class="alert alert-warning">Completa ambos campos.</div>';
     return;
@@ -118,51 +120,37 @@ async function validarEntrada() {
   status.innerHTML = '<div class="spinner-border spinner-border-sm text-primary"></div> Verificando...';
 
   try {
-    // 1. Preparamos los datos como formulario simple
+    // 3. Preparar llamada al servidor (con Proxy para evitar CORS)
     const PROXY_URL = "https://corsproxy.io/?";
-const urlParaFetch = PROXY_URL + encodeURIComponent(URL_BACKEND);
+    const urlParaFetch = PROXY_URL + encodeURIComponent(URL_BACKEND);
 
-const datosFormulario = new URLSearchParams();
-datosFormulario.append('usuario', userInput);
-datosFormulario.append('pass', passInput);
+    const datosFormulario = new URLSearchParams();
+    datosFormulario.append('usuario', userInput);
+    datosFormulario.append('pass', passInput);
 
-const respuesta = await fetch(urlParaFetch, {
-    method: "POST",
-    body: datosFormulario
-});
+    const respuesta = await fetch(urlParaFetch, {
+      method: "POST",
+      body: datosFormulario
+    });
 
-    // 3. Procesamos la respuesta
+    // 4. Procesar respuesta
     const res = await respuesta.json();
     console.log("Respuesta servidor:", res);
 
-    // 4. Tu lógica de login continúa aquí...
+    // 5. Lógica de éxito o error
     if (res && res.autorizado === true) {
-      // (Aquí va tu lógica de éxito, cerrar modal, etc.)
-      status.innerHTML = '<div class="alert alert-success">¡Acceso concedido!</div>';
-      // ... redirigir o mostrar contenido ...
-    } else {
-      status.innerHTML = '<div class="alert alert-danger">' + (res.error || 'Error desconocido') + '</div>';
-    }
-
-  } catch (error) {
-    console.error("Error capturado:", error);
-    status.innerHTML = '<div class="alert alert-danger">Error: ' + error.message + '</div>';
-  }
-}
-
-const res = await respuesta.json(); // Ahora esto no debería fallar
-console.log("Respuesta:", res);
-
-    if (res && res.autorizado === true) {
+      // Ocultar Modal
       const modalEl = document.getElementById('loginModal');
       if (modalEl) {
         const modalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
         modalInstance.hide();
       }
 
+      // Guardar sesión
       if (res.token) sessionStorage.setItem(SESSION_TOKEN_KEY, res.token);
       if (res.email) localStorage.setItem('usuarioBateria', res.email);
 
+      // Actualizar Interfaz
       aplicarPermisos(res.perfil || "basico");
 
       document.getElementById('loginScreen').classList.add('d-none');
@@ -173,16 +161,23 @@ console.log("Respuesta:", res);
       const chatBtn = document.getElementById('chat-toggle-btn');
       if (chatBtn) chatBtn.classList.remove('d-none');
 
-      status.innerHTML = '';
-      inicializarProgresoYReveals();
+      status.innerHTML = '<div class="alert alert-success">¡Acceso concedido!</div>';
+      
+      // Inicializar tus extras
+      if (typeof inicializarProgresoYReveals === 'function') {
+        inicializarProgresoYReveals();
+      }
+
     } else {
+      // Error de credenciales (pero el servidor respondió bien)
       status.innerHTML = '<div class="alert alert-danger mt-2">' + (res.error || "Acceso denegado") + '</div>';
     }
+
   } catch (error) {
+    // 6. Error de conexión (ej: no se pudo llegar al servidor)
     console.error("Error capturado:", error);
-    // Cambiamos el mensaje genérico por el mensaje real que viene del servidor
     status.innerHTML = '<div class="alert alert-danger">Error del servidor: ' + error.message + '</div>';
-}
+  }
 }
 
 // --- GESTIÓN DE USUARIOS (PANEL ADMIN) ---
