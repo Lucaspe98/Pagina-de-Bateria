@@ -439,7 +439,7 @@
   .cardvideo {
   position: relative !important; 
   /* Agregamos el linear-gradient superpuesto a la imagen para oscurecerla */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/imagen%20ref%20web2.png') !important;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/imagen%20ref%20web2.png') !important;
   background-size: cover !important;
   background-position: center !important;
   border: none !important; 
@@ -453,7 +453,7 @@
   .cardvideogrip {
   position: relative !important; 
   /* Agregamos el linear-gradient superpuesto a la imagen para oscurecerla */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/imagen%20ref%20web%20grip.png') !important;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/imagen%20ref%20web%20grip.png') !important;
   background-size: cover !important;
   background-position: center !important;
   border: none !important; 
