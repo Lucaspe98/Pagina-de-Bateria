@@ -18,7 +18,6 @@ window.logout = async function() {
   
   if (token) {
     try {
-      // Notificamos al backend para invalidar el token
       await fetch(URL_BACKEND, {
         method: "POST",
         body: JSON.stringify({
@@ -59,7 +58,6 @@ window.logout = async function() {
   const chatBtn = document.getElementById('chat-toggle-btn');
   if (chatBtn) chatBtn.classList.add('d-none');
 
-  // Limpiar URL sin recargar
   window.history.replaceState(null, null, window.location.href.split('#')[0]);
 };
 
@@ -118,9 +116,7 @@ async function validarEntrada() {
   status.innerHTML = '<div class="spinner-border spinner-border-sm text-primary"></div> Verificando...';
 
   try {
-    // LLAMADA DIRECTA SIN PROXIES
-    // Al hacer JSON.stringify y NO poner "headers", el navegador envía esto
-    // como texto plano (text/plain). Google lo acepta sin bloquear el CORS.
+    // Petición POST directa (Content-Type: text/plain implicito al omitir headers)
     const respuesta = await fetch(URL_BACKEND, {
       method: "POST",
       body: JSON.stringify({
@@ -133,7 +129,6 @@ async function validarEntrada() {
     const res = await respuesta.json();
     console.log("Respuesta servidor:", res);
 
-    // Lógica de acceso
     if (res && res.autorizado === true) {
       const modalEl = document.getElementById('loginModal');
       if (modalEl) {
@@ -168,6 +163,7 @@ async function validarEntrada() {
     console.error("Error capturado:", error);
     status.innerHTML = '<div class="alert alert-danger">Error: ' + error.message + '</div>';
   }
+}
 
 // --- GESTIÓN DE USUARIOS (PANEL ADMIN) ---
 async function crearUsuarioDesdePanel() {
