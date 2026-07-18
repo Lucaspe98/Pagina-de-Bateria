@@ -119,13 +119,17 @@ async function validarEntrada() {
 
   try {
     const respuesta = await fetch(URL_BACKEND, {
-      method: "POST",
-      body: JSON.stringify({
-        accion: "login",
-        usuario: userInput,
-        pass: passInput
-      })
-    });
+        method: "POST",
+        mode: "cors", // Cambia a 'cors' explícitamente
+        headers: {
+          "Content-Type": "text/plain" // Google Apps Script prefiere esto a veces
+        },
+        body: JSON.stringify({
+          accion: "login",
+          usuario: userInput,
+          pass: passInput
+        })
+      });
 
     const res = await respuesta.json();
     console.log("Respuesta servidor:", res);
