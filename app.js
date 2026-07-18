@@ -160,9 +160,10 @@ async function validarEntrada() {
       status.innerHTML = '<div class="alert alert-danger mt-2">' + (res.error || "Acceso denegado") + '</div>';
     }
   } catch (error) {
-    console.error("Error servidor:", error);
-    status.innerHTML = '<div class="alert alert-danger">Error de comunicación con el servidor.</div>';
-  }
+    console.error("Error capturado:", error);
+    // Cambiamos el mensaje genérico por el mensaje real que viene del servidor
+    status.innerHTML = '<div class="alert alert-danger">Error del servidor: ' + error.message + '</div>';
+}
 }
 
 // --- GESTIÓN DE USUARIOS (PANEL ADMIN) ---
