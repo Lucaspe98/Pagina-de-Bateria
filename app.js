@@ -1,4 +1,4 @@
-const URL_BACKEND = "https://script.google.com/macros/s/AKfycbxy3rSnf2JcxCrFvzxxr3aX_Uh-jTMqKb3sl5Q5YW4MrJXp7q6eYJlOIeT_3-0cBxfJ/exec";
+const URL_BACKEND = "https://script.google.com/macros/s/AKfycbybcOKfQp603XQ3G7Qd0bBxOLCINJA22AZEYPkHYsKxqC7qFvsQlu7YqIp0jlFyGXzy/exec";
 const SESSION_TOKEN_KEY = "smb_session_token";
 
 // --- TRADUCTOR GOOGLE ---
@@ -118,18 +118,22 @@ async function validarEntrada() {
   status.innerHTML = '<div class="spinner-border spinner-border-sm text-primary"></div> Verificando...';
 
   try {
-    const respuesta = await fetch(URL_BACKEND, {
-        method: "POST",
-        mode: "cors", // Cambia a 'cors' explícitamente
-        headers: {
-          "Content-Type": "text/plain" // Google Apps Script prefiere esto a veces
-        },
-        body: JSON.stringify({
-          accion: "login",
-          usuario: userInput,
-          pass: passInput
-        })
-      });
+    // ... dentro de tu función de login ...
+const respuesta = await fetch(URL_BACKEND, { // USA LA NUEVA URL AQUÍ
+    method: "POST",
+    mode: "cors", 
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        accion: "login",
+        usuario: userInput,
+        pass: passInput
+    })
+});
+
+const res = await respuesta.json(); // Ahora esto no debería fallar
+console.log("Respuesta:", res);
 
     const res = await respuesta.json();
     console.log("Respuesta servidor:", res);
