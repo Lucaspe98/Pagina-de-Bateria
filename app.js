@@ -118,9 +118,9 @@ async function validarEntrada() {
   status.innerHTML = '<div class="spinner-border spinner-border-sm text-primary"></div> Verificando...';
 
   try {
-    // Preparar llamada al servidor (Proxy)
-    const PROXY_URL = "https://corsproxy.io/?";
-    const urlParaFetch = PROXY_URL + encodeURIComponent(URL_BACKEND);
+    // Cambio a un Proxy de CORS más estable (CodeTabs)
+    const PROXY_URL = "https://api.codetabs.com/v1/proxy?quest=";
+    const urlParaFetch = PROXY_URL + URL_BACKEND;
 
     const datosFormulario = new URLSearchParams();
     datosFormulario.append('usuario', userInput);
@@ -161,7 +161,9 @@ async function validarEntrada() {
         inicializarProgresoYReveals();
       }
     } else {
-      status.innerHTML = '<div class="alert alert-danger mt-2">' + (res.error || "Acceso denegado") + '</div>';
+      // Corrección para evitar mostrar [object Object]
+      let errorMsg = typeof res.error === 'object' ? JSON.stringify(res.error) : (res.error || "Acceso denegado");
+      status.innerHTML = '<div class="alert alert-danger mt-2">' + errorMsg + '</div>';
     }
 
   } catch (error) {
