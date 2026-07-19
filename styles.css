@@ -240,7 +240,7 @@
 
   /* 2. ÚNICAMENTE las manos acentuadas dentro del ritmo se pintan de coral */
   body:not(.dark) .ritmo-bateria strong {
-    color: #D94F37 !important;
+    color: #434343 !important;
   }
 
   /* =========================================
@@ -638,7 +638,7 @@
   }
 
   .instruccion-tecnica .text-primary {
-    color: #D94F37 !important; 
+    color: #434343 !important; 
   }
 
   body.dark .instruccion-tecnica {
