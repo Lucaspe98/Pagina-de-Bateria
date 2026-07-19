@@ -441,25 +441,52 @@ function showPage(pageId) {
 
 // --- UTILIDADES ---
 function adquirirPlan(nombrePlan) {
-  let monto = "";
-  if (nombrePlan === 'Basico') monto = "$15.000";
-  if (nombrePlan === 'Plus') monto = "$30.000";
-  if (nombrePlan === 'Premium') monto = "$50.000";
+    // 1. Mapeo de datos: Más eficiente y escalable que múltiples bloques 'if'
+    const planes = {
+        'Basico': '$15.000',
+        'Plus': '$30.000',
+        'Premium': '$50.000'
+    };
 
-  document.getElementById('modalPlanNombre').innerText = nombrePlan;
-  document.getElementById('modalPlanMonto').innerText = monto + " / mes";
+    // Validación por si se inyecta un parámetro no esperado
+    const monto = planes[nombrePlan];
+    if (!monto) {
+        console.error("Error en la asignación: Plan no reconocido en el sistema.");
+        return; 
+    }
 
-  const numeroTelefono = "2964601006";
-  const mensajeTexto = `¡Hola Lucas! Acabo de realizar la transferencia para suscribirme al *Plan ${nombrePlan}* (${monto}). Acá te dejo el comprobante para habilitar mi cuenta.`;
-  const urlWhatsapp = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajeTexto)}`;
-  
-  document.getElementById('btnEnviarWhatsapp').href = urlWhatsapp;
+    // 2. Renderizado en el DOM
+    document.getElementById('modalPlanNombre').innerText = nombrePlan;
+    document.getElementById('modalPlanMonto').innerText = `${monto} / mes`;
 
-  const pagoModalEl = document.getElementById('pagoModal');
-  if (pagoModalEl) {
-    const modalInstance = bootstrap.Modal.getOrCreateInstance(pagoModalEl);
-    modalInstance.show();
-  }
+    // 3. Configuración de API de comunicaciones
+    // REQUISITO: La API de WhatsApp exige formato internacional completo sin '+'. 
+    // Se añade '549' (formato móvil Argentina). Ajustar según la región real de la línea.
+    const numeroTelefono = "5492964601006"; 
+    const mensajeTexto = `¡Hola Lucas! Acabo de realizar la transferencia para suscribirme al *Plan ${nombrePlan}* (${monto}). Acá te dejo el comprobante para habilitar mi cuenta.`;
+    
+    const urlWhatsapp = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensajeTexto)}`;
+    
+    // 4. Inserción segura del enlace
+    const btnEnviar = document.getElementById('btnEnviarWhatsapp');
+    if (btnEnviar) {
+        btnEnviar.href = urlWhatsapp;
+        btnEnviar.target = "_blank";           // Fuerza la apertura en una pestaña o app independiente
+        btnEnviar.rel = "noopener noreferrer"; // Previene vulnerabilidades de tabnabbing
+    }
+
+    // 5. Despliegue de la interfaz modal (Bootstrap)
+    const pagoModalEl = document.getElementById('pagoModal');
+    if (pagoModalEl) {
+        try {
+            const modalInstance = bootstrap.Modal.getOrCreateInstance(pagoModalEl);
+            modalInstance.show();
+        } catch (error) {
+            console.error("Error al inicializar el componente Modal de Bootstrap:", error);
+        }
+    } else {
+        console.warn("Advertencia: No se encontró el nodo 'pagoModal' en el DOM.");
+    }
 }
 
 function reproducirVideo(idVideo) {
