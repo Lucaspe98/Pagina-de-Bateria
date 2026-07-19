@@ -72,7 +72,7 @@
     /* Ajuste del botón outline dentro de la tarjeta en Hover */
     #loginScreen .card:hover .btn-outline-adaptive {
       background-color: #ffffff !important;
-      color: #D94F37 !important;
+      color: #464646 !important;
       border-color: #ffffff !important;
     }
 
