@@ -355,6 +355,21 @@ function togglePassword() {
   }
 }
 
+function toggleRegistroPassword() {
+    const input = document.getElementById('reg-password');
+    const icon = document.getElementById('toggleRegIcon');
+    
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash'); // Cambia al ícono de ojo tachado
+    } else {
+        input.type = 'password';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye'); // Regresa al ícono de ojo normal
+    }
+}
+
 function toggleNuevoPass() {
   const passInput = document.getElementById('nuevoPass');
   const icon = document.getElementById('toggleNuevoPassIcon');
