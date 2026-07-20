@@ -195,7 +195,7 @@ async function procesarRegistro(event) {
 
     try {
         // Reemplaza esto con el link a tu Google Apps Script
-        const GOOGLE_SCRIPT_URL = "URL_DE_TU_SCRIPT_DE_GOOGLE_AQUI"; 
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybcOKfQp603XQ3G7Qd0bBxOLCINJA22AZEYPkHYsKxqC7qFvsQlu7YqIp0jlFyGXzy/exec"; 
 
         const respuesta = await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
