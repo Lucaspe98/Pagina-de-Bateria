@@ -371,46 +371,82 @@ function clearHighlights() {
 }
 
 // --- CONTROL DE PERMISOS Y NAVEGACIÓN ---
+// --- CONTROL DE PERMISOS Y NAVEGACIÓN ---
 function aplicarPermisos(perfil) {
   perfil = (perfil || "basico").toLowerCase().trim();
   localStorage.setItem('perfilBateria', perfil);
 
-  const restricciones = {
-    'basico': ['impro' , 'material' , 'admin'],
-    'plus': ['admin'],
-    'premium': ['admin'],
-    'admin': []
+  // Definimos qué secciones se ocultan 100% y cuáles solo se bloquean visualmente
+  const reglas = {
+    'basico':  { ocultas: ['admin'], bloqueadas: ['impro', 'material'] },
+    'plus':    { ocultas: ['admin'], bloqueadas: ['material'] },
+    'premium': { ocultas: ['admin'], bloqueadas: [] },
+    'admin':   { ocultas: [],        bloqueadas: [] }
   };
 
-  const seccionesAOcultar = restricciones[perfil] || restricciones['basico'];
+  const configuracion = reglas[perfil] || reglas['basico'];
+  const seccionesAOcultar = configuracion.ocultas;
+  const seccionesABloquear = configuracion.bloqueadas;
+  // Juntamos ambas para restringir el acceso a nivel contenido (HTML)
+  const todasRestringidas = [...seccionesAOcultar, ...seccionesABloquear];
+
   const navLinks = document.querySelectorAll('.nav-link');
 
   navLinks.forEach(link => {
-    link.parentElement.classList.remove('d-none');
+    const liParent = link.parentElement;
+    
+    // 1. Limpiar estados y candados previos (ideal por si cambian de usuario sin recargar)
+    liParent.classList.remove('d-none');
+    link.classList.remove('text-muted', 'pe-none');
+    const candadoPrevio = link.querySelector('.bi-lock-fill');
+    if (candadoPrevio) candadoPrevio.remove();
+
     const onclickAttr = link.getAttribute('onclick') || "";
+
+    // 2. Lógica de Ocultar (Ej: Admin)
     seccionesAOcultar.forEach(id => {
       if (onclickAttr.includes(`'${id}'`)) {
-        link.parentElement.classList.add('d-none');
+        liParent.classList.add('d-none');
+      }
+    });
+
+    // 3. Lógica de Bloquear (Ej: Improvisación, Material)
+    seccionesABloquear.forEach(id => {
+      if (onclickAttr.includes(`'${id}'`)) {
+        // pe-none de Bootstrap desactiva el clic en el enlace
+        // text-muted lo vuelve gris visualmente
+        link.classList.add('text-muted', 'pe-none'); 
+        link.innerHTML += ' <i class="bi bi-lock-fill ms-1"></i>';
       }
     });
   });
 
+  // 4. Bloquear la página en el DOM principal
   const todasLasPaginas = document.querySelectorAll('.page');
   todasLasPaginas.forEach(p => {
-    if (seccionesAOcultar.includes(p.id)) {
-      p.style.display = 'none';
+    if (todasRestringidas.includes(p.id)) {
+      p.style.display = 'none'; // display: none evita que tu buscador lo encuentre
       p.classList.remove('active');
-      p.setAttribute('data-restringido', 'true');
+      p.setAttribute('data-restringido', 'true'); // Etiqueta para bloquear acceso forzado
     } else {
       p.style.display = '';
       p.removeAttribute('data-restringido');
     }
   });
 
+  // Iniciar siempre desde home
   showPage('home');
 }
 
 function showPage(pageId) {
+  const seccionDestino = document.getElementById(pageId);
+
+  // BLOQUEO DE SEGURIDAD: Evita que puedan entrar forzando la función si el contenido está bloqueado
+  if (seccionDestino && seccionDestino.getAttribute('data-restringido') === 'true') {
+    console.warn("Acceso denegado: El plan actual no tiene permisos para esta sección.");
+    return; // Frenamos la ejecución
+  }
+
   const secciones = document.querySelectorAll('.page');
   secciones.forEach(sec => {
     sec.classList.add('d-none'); 
@@ -423,7 +459,6 @@ function showPage(pageId) {
     });
   });
 
-  const seccionDestino = document.getElementById(pageId);
   if (seccionDestino) {
     seccionDestino.classList.remove('d-none');
     seccionDestino.classList.add('active');
