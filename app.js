@@ -179,22 +179,67 @@ async function validarEntrada() {
 
 // --- GESTIÓN DE USUARIOS  ---
 
-function procesarRegistro(event) {
+async function procesarRegistro(event) {
     event.preventDefault(); // Evita recargar la página
 
-    // 1. Aplicamos el perfil para ocultar/bloquear todo excepto Inicio
-    aplicarPermisos('sinplan');
+    // Capturamos el botón para ponerle un estado de "Cargando..."
+    const btn = event.target.querySelector('button[type="submit"]');
+    const textoOriginal = btn.innerHTML;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Registrando...';
+    btn.disabled = true;
 
-    // 2. Cerramos el Modal de Registro usando Bootstrap
-    const registroModalElement = document.getElementById('registroModal');
-    const modalInstance = bootstrap.Modal.getInstance(registroModalElement);
-    if(modalInstance) {
-        modalInstance.hide();
+    // Obtenemos los valores del formulario
+    const usuario = document.getElementById('reg-usuario').value;
+    const correo = document.getElementById('reg-email').value;
+    const password = document.getElementById('reg-password').value;
+
+    try {
+        // Reemplaza esto con el link a tu Google Apps Script
+        const GOOGLE_SCRIPT_URL = "URL_DE_TU_SCRIPT_DE_GOOGLE_AQUI"; 
+
+        const respuesta = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+                accion: 'registrarUsuario',
+                usuario: usuario,
+                correo: correo,
+                pass: password
+            })
+        });
+
+        const data = await respuesta.json();
+
+        if (data.ok) {
+            // Guardamos el token en localStorage igual que en tu inicio de sesión
+            localStorage.setItem('tokenBateria', data.token);
+            
+            // 1. Aplicamos el perfil para ocultar/bloquear todo excepto Inicio
+            aplicarPermisos(data.perfil); // Acá recibirá "sinplan" desde el backend
+
+            // 2. Cerramos el Modal de Registro
+            const registroModalElement = document.getElementById('registroModal');
+            const modalInstance = bootstrap.Modal.getInstance(registroModalElement);
+            if(modalInstance) {
+                modalInstance.hide();
+            }
+
+            // 3. Ocultamos la pantalla de inicio y mostramos el contenido principal
+            document.getElementById('loginScreen').classList.add('d-none');
+            document.getElementById('mainContent').classList.remove('d-none');
+            
+        } else {
+            // Mostramos la alerta en caso de que el usuario ya exista
+            alert(data.error); 
+        }
+
+    } catch (error) {
+        console.error("Error conectando al backend:", error);
+        alert("Hubo un error de red al intentar registrarse.");
+    } finally {
+        // Restauramos el botón
+        btn.innerHTML = textoOriginal;
+        btn.disabled = false;
     }
-
-    // 3. Ocultamos la pantalla de inicio y mostramos el contenido principal
-    document.getElementById('loginScreen').classList.add('d-none');
-    document.getElementById('mainContent').classList.remove('d-none');
 }
 
 // --- GESTIÓN DE USUARIOS (PANEL ADMIN) ---
