@@ -443,9 +443,9 @@ function showPage(pageId) {
 function adquirirPlan(nombrePlan) {
     // 1. Mapeo de datos: Más eficiente y escalable que múltiples bloques 'if'
     const planes = {
-        'Basico': '$15.000',
-        'Plus': '$30.000',
-        'Premium': '$50.000'
+        'Basico': '$5.000',
+        'Plus': '$15.000',
+        'Premium': '$30.000'
     };
 
     // Validación por si se inyecta un parámetro no esperado
