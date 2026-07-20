@@ -177,6 +177,26 @@ async function validarEntrada() {
   }
 }
 
+// --- GESTIÓN DE USUARIOS  ---
+
+function procesarRegistro(event) {
+    event.preventDefault(); // Evita recargar la página
+
+    // 1. Aplicamos el perfil para ocultar/bloquear todo excepto Inicio
+    aplicarPermisos('sinplan');
+
+    // 2. Cerramos el Modal de Registro usando Bootstrap
+    const registroModalElement = document.getElementById('registroModal');
+    const modalInstance = bootstrap.Modal.getInstance(registroModalElement);
+    if(modalInstance) {
+        modalInstance.hide();
+    }
+
+    // 3. Ocultamos la pantalla de inicio y mostramos el contenido principal
+    document.getElementById('loginScreen').classList.add('d-none');
+    document.getElementById('mainContent').classList.remove('d-none');
+}
+
 // --- GESTIÓN DE USUARIOS (PANEL ADMIN) ---
 async function crearUsuarioDesdePanel() {
   const token = sessionStorage.getItem(SESSION_TOKEN_KEY);
