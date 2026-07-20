@@ -260,11 +260,19 @@
                   <input type="email" class="form-control" id="reg-email" placeholder="Correo" required>
                   <label for="reg-email">Correo Electrónico</label>
                 </div>
-  
-                <!-- Contraseña -->
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="reg-password" placeholder="Contraseña" required>
-                    <label for="reg-password">Contraseña</label>
+                
+                <!-- Contraseña con botón de ver/ocultar -->
+                <div class="input-group mb-3">
+                    <div class="form-floating flex-grow-1">
+                        <input type="password" class="form-control" id="reg-password" placeholder="Contraseña" required
+                               style="border-top-right-radius: 0; border-bottom-right-radius: 0;">
+                        <label for="reg-password">Contraseña</label>
+                    </div>
+                    <button class="btn btn-outline-secondary" type="button"
+                            style="border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem;"
+                            onclick="toggleRegistroPassword()">
+                        <i class="bi bi-eye" id="toggleRegIcon"></i>
+                    </button>
                 </div>
   
                 <!-- Botón de Enviar (Notar que el color lo puse primary para diferenciarlo un poco) -->
