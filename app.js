@@ -378,6 +378,7 @@ function aplicarPermisos(perfil) {
 
   // Definimos qué secciones se ocultan 100% y cuáles solo se bloquean visualmente
   const reglas = {
+    'sinplan': { ocultas: ['admin'], bloqueadas: ['ejercicios', 'ritmos', 'estilos', 'impro', 'material'] },
     'basico':  { ocultas: ['admin'], bloqueadas: ['impro', 'material'] },
     'plus':    { ocultas: ['admin'], bloqueadas: ['material'] },
     'premium': { ocultas: ['admin'], bloqueadas: [] },
