@@ -1126,7 +1126,7 @@
          1.5 significa 150% de zoom. 
          Si aún ves franjas, súbelo a 1.8 o 2.0. 
          Si se corta mucho el video, bájalo a 1.3 */
-      transform: scale(1.5); 
+      transform: scale(1.2); 
     }
   }
 
