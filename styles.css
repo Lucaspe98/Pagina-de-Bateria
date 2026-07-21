@@ -1130,6 +1130,30 @@
     }
   }
 
+
+  .contenedor-instagram-video {
+    position: relative;
+    width: 100%;
+    max-width: 350px; /* Mismo ancho que el de YouTube para mantener armonía */
+    aspect-ratio: 9/16; /* Mantiene el formato vertical */
+    margin: 0 auto;
+    overflow: hidden; 
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    background-color: #000; /* Fondo negro por si la conexión tarda un segundo en cargar */
+  }
+
+  .contenedor-instagram-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+
+
 /* =========================================
      TÍTULOS BLANCOS EN MODO CLARO Y OSCURO
   ========================================= */
