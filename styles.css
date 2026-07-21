@@ -1133,7 +1133,7 @@
   .contenedor-instagram-recortado {
     position: relative;
     width: 100%;
-    max-width: 315px; /* Ancho ideal para que no quede gigante en PC */
+    max-width: 100%; /* Ancho ideal para que no quede gigante en PC */
     aspect-ratio: 4/5; /* Mantiene la proporción vertical exacta del video */
     margin: 0 auto;
     overflow: hidden; 
@@ -1149,7 +1149,7 @@
     left: 0;
     width: 100%;
     /* Empujamos el iframe muy hacia abajo para que los comentarios queden ocultos */
-    height: calc(100% + 250px); 
+    height: calc(100% + 230px); 
     border: none;
   }
 
