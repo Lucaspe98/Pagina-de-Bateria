@@ -1130,25 +1130,26 @@
     }
   }
 /* 1. La caja que funciona como "marco" para recortar */
-  .contenedor-instagram-limpio {
+  .contenedor-instagram-recortado {
     position: relative;
     width: 100%;
-    max-width: 350px;
+    max-width: 315px; /* Ancho ideal para que no quede gigante en PC */
+    aspect-ratio: 9/16; /* Mantiene la proporción vertical exacta del video */
     margin: 0 auto;
     overflow: hidden; 
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     background-color: #000;
-    /* EL TRUCO: Fuerza la altura vertical. 5/4 = 1.25 -> 125% */
-    padding-top: 125%; 
   }
 
-  .contenedor-instagram-limpio iframe {
+  .contenedor-instagram-recortado iframe {
     position: absolute;
-    top: -54px; 
+    /* La barra de perfil de IG mide aprox 55px sin importar la pantalla. Esto la oculta: */
+    top: -55px; 
     left: 0;
     width: 100%;
-    height: calc(100% + 175px); 
+    /* Empujamos el iframe muy hacia abajo para que los comentarios queden ocultos */
+    height: calc(100% + 250px); 
     border: none;
   }
 
