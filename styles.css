@@ -1133,8 +1133,8 @@
   .contenedor-instagram-recortado {
     position: relative;
     width: 100%;
-    max-width: 100%; /* Ancho ideal para que no quede gigante en PC */
-    aspect-ratio: 4/4; /* Mantiene la proporción vertical exacta del video */
+    max-width: 100%; 
+    aspect-ratio: 4/4; /* Ajustado al formato que pediste */
     margin: 0 auto;
     overflow: hidden; 
     border-radius: 12px;
@@ -1144,12 +1144,11 @@
 
   .contenedor-instagram-recortado iframe {
     position: absolute;
-    /* La barra de perfil de IG mide aprox 55px sin importar la pantalla. Esto la oculta: */
     top: -55px; 
-    left: 0;
-    width: 100%;
-    /* Empujamos el iframe muy hacia abajo para que los comentarios queden ocultos */
-    height: calc(100% + 210px); 
+    left: 50%; 
+    width: 120%; 
+    height: calc(100% + 210px); /* Ajustado a los 210px que mencionas */
+    transform: translateX(-50%); 
     border: none;
   }
 
