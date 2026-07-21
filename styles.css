@@ -1134,22 +1134,20 @@
     position: relative;
     width: 100%;
     max-width: 350px;
-    /* 4/5 es el tamaño estándar vertical del área negra de video en Instagram */
-    aspect-ratio: 4/5; 
     margin: 0 auto;
-    overflow: hidden; /* LA MAGIA: Todo lo que sale de esta caja desaparece */
+    overflow: hidden; 
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     background-color: #000;
+    /* EL TRUCO: Fuerza la altura vertical. 5/4 = 1.25 -> 125% */
+    padding-top: 125%; 
   }
 
-  /* 2. El reproductor modificado */
   .contenedor-instagram-limpio iframe {
     position: absolute;
-    top: -54px; /* Empuja el iframe 54 píxeles hacia arriba para ocultar el encabezado */
+    top: -54px; 
     left: 0;
     width: 100%;
-    /* Le sumamos 175 píxeles extra de alto para empujar el pie de página fuera de la vista */
     height: calc(100% + 175px); 
     border: none;
   }
