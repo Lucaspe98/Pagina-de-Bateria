@@ -1097,6 +1097,39 @@
     display:block;
 }
 
+.contenedor-zoom-video {
+    position: relative;
+    width: 100%;
+    max-width: 350px; /* Ancho máximo ideal para que no ocupe toda la pantalla en PC */
+    aspect-ratio: 9/16; /* Forzamos el formato vertical */
+    margin: 0 auto;
+    overflow: hidden; /* LA MAGIA: Oculta las franjas negras cuando hacemos zoom */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+
+  /* 2. El reproductor de YouTube */
+  .contenedor-zoom-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    transition: transform 0.3s ease; /* Transición suave */
+  }
+
+  /* 3. El Zoom SOLO para PC de escritorio (pantallas mayores a 992px) */
+  @media (min-width: 992px) {
+    .contenedor-zoom-video iframe {
+      /* JUEGA CON ESTE VALOR: 
+         1.5 significa 150% de zoom. 
+         Si aún ves franjas, súbelo a 1.8 o 2.0. 
+         Si se corta mucho el video, bájalo a 1.3 */
+      transform: scale(1.5); 
+    }
+  }
+
 /* =========================================
      TÍTULOS BLANCOS EN MODO CLARO Y OSCURO
   ========================================= */
