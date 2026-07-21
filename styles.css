@@ -1149,7 +1149,7 @@
     left: 0;
     width: 100%;
     /* Empujamos el iframe muy hacia abajo para que los comentarios queden ocultos */
-    height: calc(100% + 230px); 
+    height: calc(100% + 210px); 
     border: none;
   }
 
