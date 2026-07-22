@@ -1144,13 +1144,13 @@
 
   .contenedor-instagram-recortado iframe {
     position: absolute;
-    top: 220px; 
+    top: 50%; 
     left: 50%; 
     width: 120%; 
-    height: calc(100% + 215px); 
-    transform: translateX(-50%); 
+    height: calc(100% + 210px); 
+    transform: translate(-50%, -50%); 
     border: none;
-  }
+}
 
 
 /* =========================================
