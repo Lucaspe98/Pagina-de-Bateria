@@ -1145,9 +1145,9 @@
   .contenedor-instagram-recortado iframe {
     position: absolute;
     top: -55px; 
-    left: -50%; 
+    left: 50%; 
     width: 120%; 
-    height: calc(100% + 210px); /* Ajustado a los 210px que mencionas */
+    height: calc(100% + 215px); 
     transform: translateX(-50%); 
     border: none;
   }
