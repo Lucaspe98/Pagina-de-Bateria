@@ -71,21 +71,22 @@
 
       </div>
 
-      <!-- Contenedor YouTube Short -->
+      <!-- Contenedor YouTube Estándar (Horizontal) -->
       <div class="row justify-content-center mb-5 mt-4">
-        <div class="col-12">
-          
-          <!-- Usamos TU clase .contenedor-zoom-video que ya está en styles.css -->
-          <div class="contenedor-zoom-video mx-auto">
-            <iframe 
-                src="https://www.youtube.com/embed/DRoMXYtVAes" 
-                title="YouTube Short" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
+        <div class="col-12 col-lg-8">
+          <!-- Contenedor con bordes redondeados y sombra para mantener la estética -->
+          <div class="shadow-lg mx-auto" style="border-radius: 12px; overflow: hidden;">
+            <!-- Clase ratio-16x9 de Bootstrap para videos horizontales -->
+            <div class="ratio ratio-16x9">
+              <iframe 
+                  src="https://www.youtube.com/embed/Qvs2_DhAg2Q" 
+                  title="YouTube Video" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen>
+              </iframe>
+            </div>
           </div>
-
         </div>
       </div>
 
