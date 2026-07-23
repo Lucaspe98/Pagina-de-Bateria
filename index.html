@@ -16,37 +16,35 @@
 
   <div id="loginScreen" class="container-fluid min-vh-100 py-5 position-relative">
   
-    <!-- Botones en la pantalla de comienzo (Actualizados para abrir los Modales) -->
+    <!-- Botones en la pantalla de comienzo -->
     <div class="d-flex justify-content-center gap-3 mt-4">
         <button class="btn btn-premium-login" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</button>
         <button class="btn btn-premium-login" data-bs-toggle="modal" data-bs-target="#registroModal">Registrarse</button>
     </div>
 
-    <div class="container mt-5 pt-4">
+    <!-- CONTENEDOR PRINCIPAL AMPLIO -->
+    <!-- container-fluid y un max-width grande (1600px) para que ocupe casi toda la pantalla en PC -->
+    <div class="container-fluid mt-5 pt-4 px-4 px-lg-5" style="max-width: 1600px; margin: 0 auto;">
+      
+      <!-- Logo -->
       <div class="text-center mb-5">
         <img 
-    src="https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/logo%20Drumclass1.PNG" 
-    alt="Logo o Imagen" 
-    class="img-fluid rounded" 
-    style="
-      width: 20%; 
-      height: 20%; 
-      object-fit: cover; 
-      transform: scale(1.0);
-    ">
-       <div class="container mt-4 mb-4">
-  <div class="row justify-content-center">
-    <div class="col-lg-10">
-      
-      <!-- Fila directa para las imágenes, sin la tarjeta blanca -->
-      <div class="row g-3 justify-content-center">
+          src="https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/logo%20Drumclass1.PNG" 
+          alt="Logo Drumclass" 
+          class="img-fluid rounded" 
+          style="width: 250px; object-fit: cover;"
+        >
+      </div>
+
+      <!-- PORTADAS: Fila directa para las imágenes aprovechando el ancho -->
+      <div class="row g-4 justify-content-center mb-5">
         
         <!-- Portada 1 -->
         <div class="col-12 col-md-4">
           <img 
             src="https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/intro%20web.jpeg" 
             alt="Intro Web" 
-            class="img-fluid rounded efecto-pelicula" 
+            class="img-fluid rounded efecto-pelicula shadow-lg" 
             style="width: 100%; object-fit: cover;"
           >
         </div>
@@ -56,7 +54,7 @@
           <img 
             src="https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/img/Ritmos%20pag%201.png" 
             alt="Ritmos" 
-            class="img-fluid rounded efecto-pelicula" 
+            class="img-fluid rounded efecto-pelicula shadow-lg" 
             style="width: 100%; object-fit: cover;"
           >
         </div>
@@ -66,40 +64,42 @@
           <img 
             src="https://raw.githubusercontent.com/Lucaspe98/Pagina-de-Bateria/refs/heads/main/img/pagina%201.jpeg" 
             alt="Página 1" 
-            class="img-fluid rounded efecto-pelicula" 
+            class="img-fluid rounded efecto-pelicula shadow-lg" 
             style="width: 100%; object-fit: cover;"
           >
         </div>
 
       </div>
 
-      <!-- Contenedor Instagram -->
-      <div class="contenedor-instagram-recortado mt-4">
-          <iframe 
-              src="https://www.instagram.com/p/DZT1tOAOf3O/embed/" 
-              frameborder="0" 
-              scrolling="no" 
-              allowtransparency="true" 
-              allow="encrypted-media"
-              style="width: 100%;">
-          </iframe>
-       </div>
-      
-    </div>
-  </div>
-</div>
-    <div class="text-center mb-5">
+      <!-- Contenedor Instagram (Centrado y con límite de ancho para que no sea inmenso) -->
+      <div class="row justify-content-center mb-5">
+        <div class="col-12 col-lg-8">
+          <div class="contenedor-instagram-recortado">
+              <iframe 
+                  src="https://www.instagram.com/p/DZT1tOAOf3O/embed/" 
+                  frameborder="0" 
+                  scrolling="no" 
+                  allowtransparency="true" 
+                  allow="encrypted-media"
+                  style="width: 100%; height: 600px; border-radius: 12px;">
+              </iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- TÍTULO PLANES -->
+      <div class="text-center mb-5 mt-5">
         <h3 class="fw-bold text-brand-adaptive">Elegí tu Plan de Estudio</h3>
         <p class="text-primary">Llevá tu práctica al siguiente nivel con el contenido que necesitás.</p>
       </div>
-</div>
-      
-</div>
 
+      <!-- TARJETAS DE PLANES -->
+      <!-- Tienen su propio max-width para mantener la legibilidad de los textos -->
       <div class="row g-4 justify-content-center w-100 mx-auto" style="max-width: 1140px;">
         
+        <!-- Plan Básico -->
         <div class="col-md-4">
-          <div class="card h-100 text-center d-flex flex-column justify-content-between p-4">
+          <div class="card h-100 text-center d-flex flex-column justify-content-between p-4 shadow-sm">
             <div>
               <div class="info-box-title justify-content-center text-primary m-0">
                 <i class="bi bi-music-note-beamed"></i> Basico
@@ -118,8 +118,9 @@
           </div>
         </div>
 
+        <!-- Plan Plus -->
         <div class="col-md-4">
-          <div class="card h-100 text-center d-flex flex-column justify-content-between p-4">
+          <div class="card h-100 text-center d-flex flex-column justify-content-between p-4 shadow-sm">
             <div>
               <div class="info-box-title justify-content-center text-primary m-0">
                 <i class="bi bi-lightning-charge-fill"></i> Plus
@@ -138,8 +139,9 @@
           </div>
         </div>
 
+        <!-- Plan Premium -->
         <div class="col-md-4">
-          <div class="card h-100 text-center d-flex flex-column justify-content-between p-4">
+          <div class="card h-100 text-center d-flex flex-column justify-content-between p-4 shadow-sm">
             <div>
               <div class="info-box-title justify-content-center text-primary m-0" style="color: #6f42c1;">
                 <i class="bi bi-gem"></i> Premium
@@ -158,49 +160,47 @@
         </div>
 
       </div>
-     <!--  ''''''''''''''''''''''''''''''''' -->
-    <!--  ''''''''''''''''''''''''''''''''' -->
-      <div class="row g-3 justify-content-center" style="margin-top: 150px;"></div>
-      <h4 class="mt-5 mb-4 text-secondary fw-bold text-center">Redes Sociales</h4>
-      
-      <!-- Redes Sociales -->
-      <div class="row g-3 justify-content-center">
-        <div class="col-md-3 col-4">
-          <div class="card p-2 text-center h-100">
+
+      <!-- REDES SOCIALES -->
+      <h4 class="mt-5 pt-5 mb-4 text-secondary fw-bold text-center">Redes Sociales</h4>
+      <div class="row g-3 justify-content-center mb-5 pb-5">
+        
+        <div class="col-md-2 col-6">
+          <div class="card p-3 text-center h-100 shadow-sm">
             <a href="https://www.instagram.com/lucaspe._/" target="_blank" class="text-decoration-none text-dark">
-              <i class="bi bi-instagram text-danger d-block mb-2" style="font-size: 3rem;"></i> Instagram
+              <i class="bi bi-instagram text-danger d-block mb-2" style="font-size: 2.5rem;"></i> Instagram
             </a>
           </div>
         </div>
         
-        <div class="col-md-3 col-4">
-          <div class="card p-2 text-center h-100">
+        <div class="col-md-2 col-6">
+          <div class="card p-3 text-center h-100 shadow-sm">
             <a href="https://www.facebook.com/LucasPe98e" target="_blank" class="text-decoration-none text-dark">
-              <i class="bi bi-facebook text-primary d-block mb-2" style="font-size: 3rem;"></i> Facebook
+              <i class="bi bi-facebook text-primary d-block mb-2" style="font-size: 2.5rem;"></i> Facebook
             </a>
           </div>
         </div>
         
-        <div class="col-md-3 col-4">
-          <div class="card p-2 text-center h-100">
+        <div class="col-md-2 col-6">
+          <div class="card p-3 text-center h-100 shadow-sm">
             <a href="https://www.youtube.com/@lucaspe.98" target="_blank" class="text-decoration-none text-dark">
-              <i class="bi bi-youtube text-danger d-block mb-2" style="font-size: 3rem;"></i> Youtube
+              <i class="bi bi-youtube text-danger d-block mb-2" style="font-size: 2.5rem;"></i> Youtube
             </a>
           </div>
         </div>
         
-        <div class="col-md-3 col-4">
-          <div class="card p-2 text-center h-100">
+        <div class="col-md-2 col-6">
+          <div class="card p-3 text-center h-100 shadow-sm">
             <a href="https://meet.google.com/dbh-fbht-npn" target="_blank" class="text-decoration-none text-dark">
-              <i class="bi bi-google text-primary d-block mb-2" style="font-size: 3rem;"></i> Meet
+              <i class="bi bi-google text-primary d-block mb-2" style="font-size: 2.5rem;"></i> Meet
             </a>
           </div>
         </div>
-      </div> 
-      <!--  ''''''''''''''''''''''''''''''''' --> 
-    <!--  ''''''''''''''''''''''''''''''''' -->
-    </div>
-  </div> 
+
+      </div>
+      
+    </div> <!-- Cierre del container-fluid -->
+  </div> <!-- Cierre del loginScreen -->
     <br>
 
     <!-- MODAL INICIAR SESIÓN (Existente) -->
