@@ -468,7 +468,7 @@
    MODIFICADOR CARD DESTACADO CON IMAGEN
 ========================================= */
 .card.destacado {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/img/logo%20PDF.png') !important;
+  background-image: url('https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/img/logo%20PDF.png') !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
