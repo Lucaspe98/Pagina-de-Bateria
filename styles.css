@@ -464,6 +464,32 @@
   cursor: pointer;
 }
 
+/* =========================================
+   MODIFICADOR CARD DESTACADO CON IMAGEN
+========================================= */
+.card.destacado {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/img/logo%20PDF.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Asegurar legibilidad del texto en la tarjeta destacada */
+.card.destacado,
+.card.destacado p,
+.card.destacado h1,
+.card.destacado h2,
+.card.destacado h3,
+.card.destacado h4,
+.card.destacado h5,
+.card.destacado h6,
+.card.destacado i,
+.card.destacado li,
+.card.destacado span,
+.card.destacado a {
+  color: #ffffff !important;
+}
+
 /* Capa intermedia para centrar el ícono y manejar el cambio de fondo */
 .play-container {
   position: absolute;
