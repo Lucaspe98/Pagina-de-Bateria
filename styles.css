@@ -1212,6 +1212,18 @@
     color: #ffffff !important;
   }
 
+  .efecto-pelicula {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .efecto-pelicula:hover {
+    transform: scale(1.05) !important; /* Aumenta el tamaño un 5% */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Agrega sombra para dar profundidad */
+    z-index: 2; /* Asegura que la imagen sobresalga por encima de las demás */
+    position: relative;
+  }
+
  /* =========================================
      ADAPTACIÓN PARA MÓVILES (iPhone 12 / < 768px)
      ========================================= */
