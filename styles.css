@@ -1050,6 +1050,15 @@
     opacity: 0.85 !important;
   }
 
+/* Bloquea la interacción en contenedores con estado 'locked' y en enlaces que envuelven dichos contenedores */
+  .locked,
+  .locked a,
+  a:has(> .locked) {
+      pointer-events: none !important;
+      cursor: not-allowed !important;
+      opacity: 0.6; /* Opcional: añade retroalimentación visual de bloqueo */
+  }
+
   @keyframes unlockFlash {
     0% { transform: scale(1); filter: brightness(1); }
     50% { transform: scale(1.03); filter: brightness(1.4); }
