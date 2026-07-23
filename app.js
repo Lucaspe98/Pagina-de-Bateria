@@ -679,6 +679,18 @@ function inicializarProgresoYReveals() {
   });
 }
 
+// --- INTERCEPTOR DE MÓDULOS BLOQUEADOS ---
+document.addEventListener('click', function(e) {
+  // Verificamos si el clic ocurrió dentro de un elemento con la clase .locked
+  const elementoBloqueado = e.target.closest('.locked');
+  
+  if (elementoBloqueado) {
+    e.preventDefault();             // Evita navegación de enlaces <a>
+    e.stopImmediatePropagation();   // Detiene la ejecución del onclick="reproducirVideo(...)"
+    console.warn('Acceso denegado: El módulo se encuentra bloqueado.');
+  }
+}, true); // 'true' activa la fase de captura (intercepta antes de llegar al HTML)
+
 // --- INICIALIZACIÓN GLOBAL ÚNICA ---
 document.addEventListener("DOMContentLoaded", async () => {
   // 1. Cargar archivos externos primero
