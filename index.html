@@ -74,19 +74,18 @@
       <!-- Contenedor YouTube Short -->
       <div class="row justify-content-center mb-5 mt-4">
         <div class="col-12">
-          <!-- Limitamos el ancho a 350px para que mantenga el tamaño ideal de un celular en pantalla grande -->
-          <div class="mx-auto shadow-lg" style="max-width: 350px; border-radius: 16px; overflow: hidden;">
-            <!-- La clase ratio-9x16 de Bootstrap adapta el video automáticamente al formato vertical -->
-            <div class="ratio ratio-9x16">
-              <iframe 
-                  src="https://www.youtube.com/embed/DRoMXYtVAes" 
-                  title="YouTube Short" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen>
-              </iframe>
-            </div>
+          
+          <!-- Usamos TU clase .contenedor-zoom-video que ya está en styles.css -->
+          <div class="contenedor-zoom-video mx-auto">
+            <iframe 
+                src="https://www.youtube.com/embed/DRoMXYtVAes" 
+                title="YouTube Short" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
           </div>
+
         </div>
       </div>
 
