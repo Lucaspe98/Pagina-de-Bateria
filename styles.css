@@ -1010,8 +1010,8 @@
   .locked {
     position: relative;
     overflow: hidden;         
-    pointer-events: none;     
-    user-select: none;        
+    pointer-events: none !important; /* Etiqueta !important agregada */    
+    user-select: none !important;    /* Etiqueta !important agregada */     
     border: 1px solid #343a40;
   }
 
@@ -1340,4 +1340,9 @@
 .card-progression:not(.locked) * {
   pointer-events: auto !important;
   user-select: auto !important;
+}
+/* Bloquea completamente la etiqueta <a> si contiene un elemento bloqueado adentro */
+a:has(.locked) {
+  pointer-events: none !important;
+  cursor: default !important;
 }
