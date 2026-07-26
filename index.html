@@ -37,48 +37,53 @@
       </div>
 
       <!-- PORTADAS: Fila directa para las imágenes aprovechando el ancho -->
-      <div class="row g-4 justify-content-center mb-5">
-        
-        <!-- Portada 0 -->
-        <div class="col-12 col-md-3">
-          <img 
-            src="https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/img/cabezera%201.png" 
-            alt="Intro Web" 
-            class="img-fluid rounded efecto-pelicula shadow-lg" 
-            style="width: 100%; object-fit: cover;"
-          >
-        </div>
-        <!-- Portada 1 -->
-        <div class="col-12 col-md-3">
-          <img 
-            src="https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/intro%20web.jpeg" 
-            alt="Intro Web" 
-            class="img-fluid rounded efecto-pelicula shadow-lg" 
-            style="width: 100%; object-fit: cover;"
-          >
-        </div>
+<div class="row g-4 justify-content-center mb-5">
+  
+  <!-- Portada 0 -->
+  <div class="col-12 col-md-3">
+    <img 
+      src="https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/img/cabezera%201.png" 
+      alt="Intro Web" 
+      class="img-fluid rounded efecto-pelicula shadow-lg" 
+      style="width: 100%; object-fit: cover; cursor: pointer;"
+      onclick="abrirImagen(this.src)"
+    >
+  </div>
 
-        <!-- Portada 2 -->
-        <div class="col-12 col-md-3">
-          <img 
-            src="https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/img/Ritmos%20pag%201.png" 
-            alt="Ritmos" 
-            class="img-fluid rounded efecto-pelicula shadow-lg" 
-            style="width: 100%; object-fit: cover;"
-          >
-        </div>
+  <!-- Portada 1 -->
+  <div class="col-12 col-md-3">
+    <img 
+      src="https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/intro%20web.jpeg" 
+      alt="Intro Web" 
+      class="img-fluid rounded efecto-pelicula shadow-lg" 
+      style="width: 100%; object-fit: cover; cursor: pointer;"
+      onclick="abrirImagen(this.src)"
+    >
+  </div>
 
-        <!-- Portada 3 -->
-        <div class="col-12 col-md-3">
-          <img 
-            src="https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/img/pagina%201.jpeg" 
-            alt="Página 1" 
-            class="img-fluid rounded efecto-pelicula shadow-lg" 
-            style="width: 100%; object-fit: cover;"
-          >
-        </div>
+  <!-- Portada 2 -->
+  <div class="col-12 col-md-3">
+    <img 
+      src="https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/img/Ritmos%20pag%201.png" 
+      alt="Ritmos" 
+      class="img-fluid rounded efecto-pelicula shadow-lg" 
+      style="width: 100%; object-fit: cover; cursor: pointer;"
+      onclick="abrirImagen(this.src)"
+    >
+  </div>
 
-      </div>
+  <!-- Portada 3 -->
+  <div class="col-12 col-md-3">
+    <img 
+      src="https://cdn.jsdelivr.net/gh/Lucaspe98/Pagina-de-Bateria@main/img/pagina%201.jpeg" 
+      alt="Página 1" 
+      class="img-fluid rounded efecto-pelicula shadow-lg" 
+      style="width: 100%; object-fit: cover; cursor: pointer;"
+      onclick="abrirImagen(this.src)"
+    >
+  </div>
+
+</div>
 
       <!-- Contenedor YouTube Estándar (Horizontal) -->
       <div class="row justify-content-center mb-5 mt-4">
@@ -431,6 +436,20 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal para visualizar imágenes en grande -->
+<div class="modal fade" id="visorImagenes" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center p-0">
+        <img id="imagenAmpliada" src="" class="img-fluid rounded shadow-lg" alt="Imagen en grande">
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Llamada al archivo JavaScript estático -->
   <script src="app.js"></script>
