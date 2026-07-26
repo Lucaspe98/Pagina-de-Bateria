@@ -744,6 +744,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
+  // ABRIR IMAGEN DE INDEX
+  function abrirImagen(src) {
+    // Cambiamos el source de la imagen del modal por la imagen clickeada
+    document.getElementById('imagenAmpliada').src = src;
+    
+    // Inicializamos y abrimos el modal de Bootstrap
+    var miModal = new bootstrap.Modal(document.getElementById('visorImagenes'));
+    miModal.show();
+  }
+
+
   // 6. Navegación táctil
   const nav = document.querySelector('.navbar-collapse');
   if(nav) {
